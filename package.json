@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "hugo": "^0.0.3",
+    "hugo-extended": "^0.120.4"
+  }
+}

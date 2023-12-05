@@ -1,6 +1,6 @@
 ---
 # Leave the homepage title empty to use the site title
-title: ''
+title: ""
 date: 2022-10-24
 type: landing
 
@@ -10,8 +10,9 @@ sections:
     content:
       title: Biography
       # Choose a user profile to display (a folder name within `content/authors/`)
-      username: admin
+      username: alessandro
   - block: experience
+    id: experience
     content:
       title: Experience
       # Date format for experience
@@ -23,29 +24,28 @@ sections:
       #   Leave `date_end` empty if it's your current employer.
       #   Begin multi-line descriptions with YAML's `|2-` multi-line prefix.
       items:
-        - title: CEO
-          company: GenCoin
-          company_url: ''
-          company_logo: org-gc
-          location: California
-          date_start: '2021-01-01'
-          date_end: ''
-          description: |2-
-              Responsibilities include:
-
-              * Analysing
-              * Modelling
-              * Deploying
-        - title: Professor of Semiconductor Physics
-          company: University X
-          company_url: ''
-          company_logo: org-x
-          location: California
-          date_start: '2016-01-01'
-          date_end: '2020-12-31'
-          description: Taught electronic engineering and researched semiconductor physics.
+        - title: Junior C++ Developer
+          company: Pulsar Trading
+          company_url: ""
+          company_logo: pulsar
+          location: London
+          date_start: "2022-10-04"
+          date_end: ""
+          # description: |2-
+          #     Responsibilities include:
+        #
+        #     * Analysing
+        #     * Modelling
+        #     * Deploying
+        - title: Intern
+          company: Arqit
+          company_url: ""
+          company_logo: arqit
+          location: London
+          date_start: "2022-07-01"
+          date_end: "2022-09-01"
     design:
-      columns: '2'
+      columns: "2"
   - block: portfolio
     id: projects
     content:
@@ -60,42 +60,28 @@ sections:
       # To show all items, set `tag` to "*".
       # To filter by a specific tag, set `tag` to an existing tag name.
       # To remove the toolbar, delete the entire `filter_button` block.
-      buttons:
-        - name: All
-          tag: '*'
-        - name: Deep Learning
-          tag: Deep Learning
-        - name: Other
-          tag: Demo
+      #buttons:
+      #  - name: All
+      #    tag: "*"
+      #  - name: Deep Learning
+      #    tag: Deep Learning
+      #  - name: Other
+      #    tag: Demo
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
-      columns: '1'
+      columns: "1"
       view: showcase
       # For Showcase view, flip alternate rows?
       flip_alt_rows: false
   - block: collection
-    id: featured
+    id: publication
     content:
-      title: Featured Publications
+      title: Research
       filters:
         folders:
           - publication
         featured_only: true
     design:
-      columns: '2'
+      columns: "2"
       view: card
-  - block: collection
-    content:
-      title: Recent Publications
-      text: |-
-        {{% callout note %}}
-        Quickly discover relevant content by [filtering publications](./publication/).
-        {{% /callout %}}
-      filters:
-        folders:
-          - publication
-        exclude_featured: true
-    design:
-      columns: '2'
-      view: citation
 ---
