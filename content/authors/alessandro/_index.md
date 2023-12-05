@@ -111,5 +111,5 @@ social:
 highlight_name: true
 ---
 
-I am a University of Cambridge graduate. My research interests include graph neural networks, concept-based explainability, and the intersection between machine learning and computational biology.
+I am a University of Cambridge graduate. My research interests include graph neural networks, concept-based explainability, and the intersection between machine learning and healthcare.
 {style="text-align: justify;"}

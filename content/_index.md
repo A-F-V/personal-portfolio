@@ -11,6 +11,17 @@ sections:
       title: Biography
       # Choose a user profile to display (a folder name within `content/authors/`)
       username: alessandro
+  - block: collection
+    id: research
+    content:
+      title: Research
+      filters:
+        folders:
+          - publication
+        featured_only: true
+    design:
+      columns: "2"
+      view: card
   - block: experience
     id: experience
     content:
@@ -73,15 +84,4 @@ sections:
       view: showcase
       # For Showcase view, flip alternate rows?
       flip_alt_rows: false
-  - block: collection
-    id: publication
-    content:
-      title: Research
-      filters:
-        folders:
-          - publication
-        featured_only: true
-    design:
-      columns: "2"
-      view: card
 ---
