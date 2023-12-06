@@ -28,9 +28,9 @@ tags:
 featured: true
 
 links:
-#  - name: Custom Link
-#    url: http://example.org
-#url_pdf: http://arxiv.org/pdf/1512.04133v1
+  - name: ArXiv
+    url: https://arxiv.org/abs/2312.02225
+#url_pdf: https://arxiv.org/abs/2312.02225
 url_code: "https://github.com/A-F-V/XAI-Cancer-Diagnosis"
 #url_dataset: "#"
 #url_poster: "#"
