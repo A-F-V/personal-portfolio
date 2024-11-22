@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --dark-night: #020016;
+    --oxford-blue: #141429;
+    --delft-blue: #23395b;
+    --lapiz-lazuli: #2c5c82;
+    --old-lace: #f2eada;
+    --floral-white: #fcf7ec;
+    --powder: #f8f8f8;
+    --crayola-pink: #ed5574;
+
+    --primary: var(--lapiz-lazuli);
+    --secondary: var(--crayola-pink);
+
+    /* --background: var(--old-lace);
+    --midground: var(--floral-white);
+    --preground: var(--powder);
+    --foreground: var(--oxford-blue); */
+
+    --background: var(--dark-night);
+    --midground: var(--oxford-blue);
+    --preground: var(--lapiz-lazuli);
+    --foreground: var(--floral-white);
+
+    --main-font: "EB Garamond";
+
+    --radius: 0.75rem;
+  }
+}
