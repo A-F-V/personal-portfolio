@@ -1,7 +1,7 @@
 import { Container } from "@/components/container";
 import { ProfileImage } from "@/components/profile-img";
 import Image from "next/image";
-import Link from "next/link";
+//import Link from "next/link";
 
 function SocialLinks() {
   const socialLinks = [
@@ -77,6 +77,7 @@ function Roles() {
   );
 }
 
+/*
 function NavLinks() {
   const navLinks = [
     { href: "/about", text: "me" },
@@ -93,7 +94,7 @@ function NavLinks() {
     </div>
   );
 }
-
+*/
 export default function Home() {
   return (
     <div className="flex items-center justify-center min-h-screen text-foreground px-4 sm:px-0">
