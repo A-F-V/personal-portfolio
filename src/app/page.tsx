@@ -56,9 +56,12 @@ function SocialLinks() {
 
 function Roles() {
   const roles = [
+    /*
     "wistful cambridge cs grad",
     "hungry and foolish indie hacker",
     "knowledge gardener",
+    */
+    "building better tools for knowledge gardeners",
   ];
 
   return (
