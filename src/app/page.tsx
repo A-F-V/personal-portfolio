@@ -54,6 +54,39 @@ function SocialLinks() {
   );
 }
 
+function Projects() {
+  const projects = [
+    {
+      name: "arcana",
+      href: "https://github.com/A-F-V/obsidian-arcana",
+    },
+  ];
+
+  return (
+    <div className="flex flex-col items-center space-y-2">
+      {projects.map((project) => (
+        <a
+          key={project.name}
+          href={project.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="italic no-underline hover:underline transition-all text-foreground/80"
+        >
+          {project.name}
+        </a>
+      ))}
+    </div>
+  );
+}
+
+function LineBreak() {
+  return (
+    <div className="flex items-center justify-center my-4">
+      <div className="hidden sm:block w-[1px] border-t border-foreground/90" />
+    </div>
+  );
+}
+
 function Roles() {
   const roles = [
     /*
@@ -65,7 +98,7 @@ function Roles() {
   ];
 
   return (
-    <div className="text-center mb-4 sm:mb-6 text-md sm:text-xl px-4">
+    <div className="text-center  text-md sm:text-xl px-4">
       {roles.map((role, index) => (
         <>
           <span key={role} className="mx-2 sm:mx-4 block sm:inline">
@@ -116,6 +149,9 @@ export default function Home() {
         </h1>
 
         <Roles />
+        <LineBreak />
+        <Projects />
+        <LineBreak />
         <SocialLinks />
       </Container>
     </div>
