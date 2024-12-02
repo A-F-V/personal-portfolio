@@ -48,6 +48,7 @@ export default {
         sans: ["var(--main-font)", "sans-serif"],
         serif: ["var(--main-font)", "serif"],
         inter: ["var(--font-inter)", "sans-serif"],
+        poppins: ["var(--font-poppins)", "sans-serif"],
       },
 
       maxWidth: {

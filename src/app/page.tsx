@@ -1,3 +1,4 @@
+import { Button } from "@/components/button";
 import { Container } from "@/components/container";
 import { ProfileImage } from "@/components/profile-img";
 import Image from "next/image";
@@ -16,14 +17,20 @@ function SocialLinks() {
       label: "LinkedIn",
     },
     {
+      href: "https://alessandrofv.substack.com/",
+      icon: "substack",
+      label: "Substack",
+    },
+    {
       href: "https://x.com/AFV_7",
       icon: "twitter",
       label: "Twitter",
     },
+
     {
-      href: "https://alessandrofv.substack.com/",
-      icon: "substack",
-      label: "Substack",
+      href: "https://bsky.app/profile/alessandrofv.bsky.social",
+      icon: "bluesky",
+      label: "Bluesky",
     },
   ];
 
@@ -46,7 +53,7 @@ function SocialLinks() {
               className="invert sm:w-6 sm:h-6"
             />
           ) : (
-            <i className={`fab fa-${icon}`} />
+            <i className={`fa-brands fa-${icon} sm:w-6 sm:h-6`} />
           )}
         </a>
       ))}
@@ -57,28 +64,25 @@ function SocialLinks() {
 function Projects() {
   const projects = [
     {
-      name: "arcana",
+      name: "✨ arcana",
       href: "https://github.com/A-F-V/obsidian-arcana",
     },
   ];
 
   return (
-    <div className="flex flex-col items-center space-y-2">
+    <div className="flex flex-col items-center space-y-2 mb-6">
       {projects.map((project) => (
-        <a
-          key={project.name}
-          href={project.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="italic no-underline hover:underline transition-all text-foreground/80"
-        >
-          {project.name}
-        </a>
+        <Button key={project.name} variant="outline" rel="noopener noreferrer">
+          <a href={project.href} target="_blank" className="">
+            {project.name}
+          </a>
+        </Button>
       ))}
     </div>
   );
 }
 
+/*
 function LineBreak() {
   return (
     <div className="flex items-center justify-center my-4">
@@ -86,19 +90,19 @@ function LineBreak() {
     </div>
   );
 }
-
+*/
 function Roles() {
   const roles = [
     /*
     "wistful cambridge cs grad",
-    "hungry and foolish indie hacker",
+    "hungry and foolish indie hacker", 
     "knowledge gardener",
     */
-    "building better tools for knowledge gardeners",
+    "building better tools for knowledge gardeners 🌸",
   ];
 
   return (
-    <div className="text-center  text-md sm:text-xl px-4">
+    <div className="text-center  text-sm sm:text-lg px-4 mb-6">
       {roles.map((role, index) => (
         <>
           <span key={role} className="mx-2 sm:mx-4 block sm:inline">
@@ -133,7 +137,7 @@ function NavLinks() {
 */
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen text-foreground px-4 sm:px-0">
+    <div className="flex items-center justify-center min-h-screen font-poppins text-foreground px-4 sm:px-0">
       <Container>
         <div className="flex justify-center mb-4">
           <ProfileImage
@@ -144,14 +148,12 @@ export default function Home() {
           />
         </div>
 
-        <h1 className="text-2xl sm:text-5xl   text-center mb-3 sm:mb-4 font-inter font-black">
+        <h1 className="text-2xl sm:text-5xl text-center mb-3 sm:mb-4  font-bold">
           Alessandro Farace
         </h1>
 
         <Roles />
-        <LineBreak />
         <Projects />
-        <LineBreak />
         <SocialLinks />
       </Container>
     </div>
