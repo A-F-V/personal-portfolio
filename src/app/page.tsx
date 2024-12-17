@@ -1,25 +1,33 @@
-import { Button } from "@/components/button";
 import { Container } from "@/components/container";
 import { ProfileImage } from "@/components/profile-img";
 import Image from "next/image";
+import { ProjectButton, ProjectInfo } from "./project-button";
+import { MacIcon, ReadwiseIcon } from "@/components/icon";
+import { ObsidianIcon } from "@/components/icon";
 //import Link from "next/link";
 
 function SocialLinks() {
   const socialLinks = [
-    {
-      href: "https://github.com/A-F-V",
-      icon: "github",
-      label: "GitHub",
-    },
     {
       href: "https://www.linkedin.com/in/alessandro-farace-587959193/",
       icon: "linkedin",
       label: "LinkedIn",
     },
     {
+      href: "https://github.com/A-F-V",
+      icon: "github",
+      label: "GitHub",
+    },
+
+    {
       href: "https://alessandrofv.substack.com/",
       icon: "substack",
       label: "Substack",
+    },
+    {
+      href: "https://www.reddit.com/user/AFV_7/",
+      icon: "reddit",
+      label: "Reddit",
     },
     {
       href: "https://x.com/AFV_7",
@@ -62,21 +70,29 @@ function SocialLinks() {
 }
 
 function Projects() {
-  const projects = [
+  const projects: ProjectInfo[] = [
     {
-      name: "✨ arcana",
+      name: "✨ Janus",
+      href: "https://getwaitlist.com/waitlist/23183",
+      description:
+        "Automatically transform your notes and reading highlights into time-efficient flashcards",
+      status: "waitlist",
+      stack: [MacIcon, ObsidianIcon, ReadwiseIcon],
+    },
+    {
+      name: "Arcana",
       href: "https://github.com/A-F-V/obsidian-arcana",
+      description:
+        "Supercharge your Obsidian note-taking with AI-powered insights and suggestions ",
+      status: "released",
+      stack: [ObsidianIcon],
     },
   ];
 
   return (
-    <div className="flex flex-col items-center space-y-2 mb-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 justify-items-center mb-6">
       {projects.map((project) => (
-        <Button key={project.name} variant="outline" rel="noopener noreferrer">
-          <a href={project.href} target="_blank" className="">
-            {project.name}
-          </a>
-        </Button>
+        <ProjectButton key={project.name} project={project} />
       ))}
     </div>
   );
