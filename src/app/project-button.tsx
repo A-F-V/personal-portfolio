@@ -1,10 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import { IconType, Icon } from "@/components/icon";
 import { Badge } from "@/components/badge";
+import { sendGAEvent } from "@next/third-parties/google";
 
 export type ProjectStatus = "released" | "in-progress" | "waitlist";
 export type ProjectInfo = {
   name: string;
+  id: string;
   href: string;
   description: string;
   status: ProjectStatus;
@@ -15,6 +19,9 @@ export function ProjectButton({ project }: { project: ProjectInfo }) {
   return (
     <Link
       href={project.href}
+      onClick={() =>
+        sendGAEvent("project_click", "Projects", { value: project.id })
+      }
       className="block w-72 h-48 rounded-2xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,255,255,0.3)] group relative"
     >
       <div className="absolute inset-0 bg-gradient-to-br to-midground from-preground opacity-90 z-0"></div>

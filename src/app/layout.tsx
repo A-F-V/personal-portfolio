@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Poppins } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
-import GoogleAnalytics from "./components/GoogleAnalytics";
-
+import { GoogleAnalytics } from "@next/third-parties/google";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -41,7 +40,7 @@ export default function RootLayout({
       >
         {children}
         <Analytics />
-        <GoogleAnalytics />
+        <GoogleAnalytics gaId="G-CQ57BSS24F" />
       </body>
     </html>
   );

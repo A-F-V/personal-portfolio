@@ -1,3 +1,4 @@
+"use client";
 import { Container } from "@/components/container";
 import { ProfileImage } from "@/components/profile-img";
 import Image from "next/image";
@@ -9,34 +10,34 @@ import { ObsidianIcon } from "@/components/icon";
 function SocialLinks() {
   const socialLinks = [
     {
-      href: "https://www.linkedin.com/in/alessandro-farace-587959193/",
+      href: "https://www.linkedin.com/in/alessandro-farace-587959193/?ref=alessandrofv.com",
       icon: "linkedin",
       label: "LinkedIn",
     },
     {
-      href: "https://github.com/A-F-V",
+      href: "https://github.com/A-F-V?ref=alessandrofv.com",
       icon: "github",
       label: "GitHub",
     },
 
     {
-      href: "https://alessandrofv.substack.com/",
+      href: "https://alessandrofv.substack.com/?ref=alessandrofv.com",
       icon: "substack",
       label: "Substack",
     },
     {
-      href: "https://www.reddit.com/user/AFV_7/",
+      href: "https://www.reddit.com/user/AFV_7/?ref=alessandrofv.com",
       icon: "reddit",
       label: "Reddit",
     },
     {
-      href: "https://x.com/AFV_7",
+      href: "https://x.com/AFV_7?ref=alessandrofv.com",
       icon: "twitter",
       label: "Twitter",
     },
 
     {
-      href: "https://bsky.app/profile/alessandrofv.bsky.social",
+      href: "https://bsky.app/profile/alessandrofv.bsky.social?ref=alessandrofv.com",
       icon: "bluesky",
       label: "Bluesky",
     },
@@ -73,7 +74,8 @@ function Projects() {
   const projects: ProjectInfo[] = [
     {
       name: "✨ Janus",
-      href: "https://getwaitlist.com/waitlist/23183",
+      id: "janus",
+      href: "https://getwaitlist.com/waitlist/23183?ref=alessandrofv.com",
       description:
         "Automatically transform your notes and reading highlights into time-efficient flashcards",
       status: "waitlist",
@@ -81,7 +83,8 @@ function Projects() {
     },
     {
       name: "Arcana",
-      href: "https://github.com/A-F-V/obsidian-arcana",
+      id: "arcana",
+      href: "https://github.com/A-F-V/obsidian-arcana?ref=alessandrofv.com",
       description:
         "Supercharge your Obsidian note-taking with AI-powered insights and suggestions ",
       status: "released",
