@@ -7,6 +7,7 @@ import Image from "next/image";
 export type IconType = {
   lucide?: LucideIcon;
   imgSrc?: string;
+  fontAwesome?: string;
   background?: string;
 };
 
@@ -22,21 +23,26 @@ type IconProps = VariantProps<typeof iconVariants> & {
   size?: number;
   icon: IconType;
 };
+
+const cls = "rounded-sm";
 export function Icon({ variant, className, icon, size }: IconProps) {
   return (
     <>
-      {icon.lucide && (
+      {icon.lucide || icon.fontAwesome ? (
         <div
           className={cn(
             iconVariants({ variant }),
             className,
-            `size-[${size}px]`
+            `h-[${size}px]`,
+            cls
           )}
         >
-          <icon.lucide className="w-full h-full" />
+          {icon.lucide && <icon.lucide className="w-full h-full" />}
+          {icon.fontAwesome && (
+            <i className={`fa-brands fa-${icon.fontAwesome}`} />
+          )}
         </div>
-      )}
-      {icon.imgSrc && (
+      ) : (
         <Image
           src={icon.imgSrc}
           alt="Icon"
@@ -44,7 +50,8 @@ export function Icon({ variant, className, icon, size }: IconProps) {
             iconVariants({ variant }),
             className,
             `size-[${size}px]`,
-            icon.background
+            icon.background,
+            cls
           )}
           width={size}
           height={size}
@@ -66,4 +73,33 @@ export const ReadwiseIcon: IconType = {
 export const MacIcon: IconType = {
   imgSrc: "/mac-icon.png",
   background: "bg-foreground",
+};
+
+export const JanusIcon: IconType = {
+  imgSrc: "/janus-icon.svg",
+};
+
+export const SubstackIcon: IconType = {
+  imgSrc: "/substack.svg",
+  background: "bg-foreground",
+};
+
+export const LinkedInIcon: IconType = {
+  fontAwesome: "linkedin",
+};
+
+export const GithubIcon: IconType = {
+  fontAwesome: "github",
+};
+
+export const BlueskyIcon: IconType = {
+  fontAwesome: "bluesky",
+};
+
+export const RedditIcon: IconType = {
+  fontAwesome: "reddit",
+};
+
+export const TwitterIcon: IconType = {
+  fontAwesome: "twitter",
 };

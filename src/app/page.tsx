@@ -3,7 +3,18 @@ import { Container } from "@/components/container";
 import { ProfileImage } from "@/components/profile-img";
 import Image from "next/image";
 import { ProjectButton, ProjectInfo } from "./project-button";
-import { MacIcon, ReadwiseIcon } from "@/components/icon";
+import {
+  BlueskyIcon,
+  GithubIcon,
+  Icon,
+  JanusIcon,
+  LinkedInIcon,
+  MacIcon,
+  ReadwiseIcon,
+  RedditIcon,
+  SubstackIcon,
+  TwitterIcon,
+} from "@/components/icon";
 import { ObsidianIcon } from "@/components/icon";
 //import Link from "next/link";
 
@@ -11,34 +22,34 @@ function SocialLinks() {
   const socialLinks = [
     {
       href: "https://www.linkedin.com/in/alessandro-farace-587959193/?ref=alessandrofv.com",
-      icon: "linkedin",
+      icon: LinkedInIcon,
       label: "LinkedIn",
     },
     {
       href: "https://github.com/A-F-V?ref=alessandrofv.com",
-      icon: "github",
+      icon: GithubIcon,
       label: "GitHub",
     },
 
     {
       href: "https://alessandrofv.substack.com/?ref=alessandrofv.com",
-      icon: "substack",
+      icon: SubstackIcon,
       label: "Substack",
     },
     {
       href: "https://www.reddit.com/user/AFV_7/?ref=alessandrofv.com",
-      icon: "reddit",
+      icon: RedditIcon,
       label: "Reddit",
     },
     {
       href: "https://x.com/AFV_7?ref=alessandrofv.com",
-      icon: "twitter",
+      icon: TwitterIcon,
       label: "Twitter",
     },
 
     {
       href: "https://bsky.app/profile/alessandrofv.bsky.social?ref=alessandrofv.com",
-      icon: "bluesky",
+      icon: BlueskyIcon,
       label: "Bluesky",
     },
   ];
@@ -46,24 +57,8 @@ function SocialLinks() {
   return (
     <div className="flex justify-center space-x-6 sm:space-x-8 text-2xl sm:text-3xl">
       {socialLinks.map(({ href, icon }) => (
-        <a
-          key={href}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="h-[32px] sm:h-[36px] flex items-center justify-center"
-        >
-          {icon === "substack" ? (
-            <Image
-              src="/substack.svg"
-              alt="Substack"
-              width={20}
-              height={20}
-              className="invert sm:w-6 sm:h-6"
-            />
-          ) : (
-            <i className={`fa-brands fa-${icon} sm:w-6 sm:h-6`} />
-          )}
+        <a key={href} href={href} target="_blank" rel="noopener noreferrer">
+          <Icon icon={icon} size={24} />
         </a>
       ))}
     </div>
@@ -73,9 +68,10 @@ function SocialLinks() {
 function Projects() {
   const projects: ProjectInfo[] = [
     {
-      name: "✨ Janus",
+      name: "Janus",
+      icon: JanusIcon,
       id: "janus",
-      href: "https://getwaitlist.com/waitlist/23183?ref=alessandrofv.com",
+      href: "https://janus.cards",
       description:
         "Automatically transform your notes and reading highlights into time-efficient flashcards",
       status: "waitlist",
