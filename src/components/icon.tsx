@@ -43,19 +43,21 @@ export function Icon({ variant, className, icon, size }: IconProps) {
           )}
         </div>
       ) : (
-        <Image
-          src={icon.imgSrc}
-          alt="Icon"
-          className={cn(
-            iconVariants({ variant }),
-            className,
-            `size-[${size}px]`,
-            icon.background,
-            cls
-          )}
-          width={size}
-          height={size}
-        />
+        icon.imgSrc && (
+          <Image
+            src={icon.imgSrc}
+            alt="Icon"
+            className={cn(
+              iconVariants({ variant }),
+              className,
+              `size-[${size}px]`,
+              icon.background,
+              cls
+            )}
+            width={size}
+            height={size}
+          />
+        )
       )}
     </>
   );
