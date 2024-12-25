@@ -1,7 +1,6 @@
 "use client";
 import { Container } from "@/components/container";
 import { ProfileImage } from "@/components/profile-img";
-import Image from "next/image";
 import { ProjectButton, ProjectInfo } from "./project-button";
 import {
   BlueskyIcon,
