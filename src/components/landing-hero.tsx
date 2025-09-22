@@ -16,6 +16,7 @@ import { cn } from "@/lib/utils";
 import { MinorHeading } from "./headings";
 import { IconType } from "./icon";
 import { ProjectCard } from "./project-card";
+import { EssayLink } from "./essay-link";
 
 import { FaCodeCommit } from "react-icons/fa6";
 const socialLinks = [
@@ -65,6 +66,27 @@ const featuredProjects = [
     },
 ];
 
+const featuredEssays = [
+    {
+        title: "The Path Less Traveled",
+        link: "https://thoughts.alessandrofv.com/p/4-the-path-less-travelled?r=2qkftu",
+        datePublished: "2024-12-23",
+        tags: ["personal experience"],
+    },
+    {
+        title: "File Over App: The Philosophical Case",
+        link: "https://thoughts.alessandrofv.com/p/3-file-over-app-the-philisophical?r=2qkftu",
+        datePublished: "2024-11-26",
+        tags: ["software"],
+    },
+    {
+        title: "Overcoming Weak Inclinations",
+        link: "https://thoughts.alessandrofv.com/p/2-overcoming-weak-inclinations?r=2qkftu",
+        datePublished: "2024-09-16",
+        tags: ["personal experience"],
+    },
+];
+
 function SocialLinks({ className }: { className?: string }) {
     return (
         <div
@@ -98,49 +120,54 @@ function Highlight({ children }: { children: React.ReactNode }) {
 
 export function LandingHero() {
     return (
-        <div className="flex items-center justify-center min-h-screen px-4 sm:px-6 py-12">
-            <Container className="max-w-6xl w-full">
-                <div className="grid gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] items-start">
-                    <div className="flex flex-col gap-10 items-center">
-                        <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden max-w-[300px]">
-                            <Image
-                                src="/personal/alessandro.jpeg"
-                                alt="Alessandro Farace"
-                                fill
-                                priority
-                                className="object-cover object-top "
-                            />
-                        </div>
-
-                        <SocialLinks className="mx-auto" />
+        <Container className="max-w-7xl w-full">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] items-start">
+                <div className="flex flex-col gap-10 items-center">
+                    <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden max-w-[300px]">
+                        <Image
+                            src="/personal/alessandro.jpeg"
+                            alt="Alessandro Farace"
+                            fill
+                            priority
+                            className="object-cover object-top "
+                        />
                     </div>
 
-                    <div className="flex flex-col gap-6 max-w-prose">
-                        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-serif font-semibold tracking-tight">
-                            Alessandro Farace
-                        </h1>
+                    <SocialLinks className="mx-auto" />
+                </div>
 
-                        <p>
-                            I&apos;m a <Highlight>software engineer</Highlight>{" "}
-                            exploring how technology can transform{" "}
-                            <Highlight>education and learning</Highlight>.
-                            Despite the explosion of free online educational
-                            content, graduates have not seen an improvement in
-                            intellectual or career outcomes; in 2025, the
-                            situation is actually worsening.
-                        </p>
-                        <p>
-                            And yet, pedagogists have strong evidence that
-                            better methods and tools of instruction can nurture
-                            students to the ability of the todays&apos; top 5%.
-                        </p>
-                        <p>
-                            This opportunity to{" "}
-                            <Highlight>
-                                radically realize student&apos;s potential
-                            </Highlight>{" "}
-                            is what inspires me and my work.
-                        </p>
+                <div className="flex flex-col gap-8 max-w-[60ch]">
+                    <div>
+                        <MinorHeading className="text-8xl">
+                            Alessandro Farace
+                        </MinorHeading>
+                        <div className="flex flex-col gap-4">
+                            <p>
+                                I&apos;m a{" "}
+                                <Highlight>software engineer</Highlight>{" "}
+                                exploring how technology can transform{" "}
+                                <Highlight>education and learning</Highlight>.
+                                Despite the explosion of free online educational
+                                content, graduates have not seen an improvement
+                                in intellectual or career outcomes; in 2025, the
+                                situation is actually worsening.
+                            </p>
+                            <p>
+                                And yet, pedagogists have strong evidence that
+                                better methods and tools of instruction can
+                                nurture students to the ability of the
+                                todays&apos; top 5%.
+                            </p>
+                            <p>
+                                This opportunity to{" "}
+                                <Highlight>
+                                    radically realize student&apos;s potential
+                                </Highlight>{" "}
+                                is what inspires me and my work.
+                            </p>
+                        </div>
+                    </div>
+                    <div>
                         <MinorHeading icon={headingIcon}>Projects</MinorHeading>
                         <div className="flex flex-col gap-6">
                             {featuredProjects.map((project) => (
@@ -154,10 +181,24 @@ export function LandingHero() {
                                 />
                             ))}
                         </div>
+                    </div>
+                    <div>
                         <MinorHeading icon={headingIcon}>Essays</MinorHeading>
+
+                        <div className="flex flex-col gap-3">
+                            {featuredEssays.map((essay) => (
+                                <EssayLink
+                                    key={`${essay.title}-${essay.datePublished}`}
+                                    title={essay.title}
+                                    link={essay.link}
+                                    datePublished={essay.datePublished}
+                                    tags={essay.tags}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
-            </Container>
-        </div>
+            </div>
+        </Container>
     );
 }

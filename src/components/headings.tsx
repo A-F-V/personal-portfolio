@@ -1,3 +1,4 @@
+import { cn } from "@/lib/utils";
 import { Icon, IconType } from "./icon";
 
 type MinorHeadingProps = {
@@ -6,10 +7,15 @@ type MinorHeadingProps = {
     children: React.ReactNode;
 };
 
-export function MinorHeading({ children, icon }: MinorHeadingProps) {
+export function MinorHeading({ children, icon, className }: MinorHeadingProps) {
     return (
         <>
-            <h2 className="text-lg sm:text-xl lg:text-lg font-accent accent-style tracking-tight flex items-center gap-2 text-foreground">
+            <h2
+                className={cn(
+                    "text-5xl font-serif  flex items-center gap-4 text-foreground my-4 lg:my-6",
+                    className
+                )}
+            >
                 {icon && <Icon icon={icon} />}
                 {children}
             </h2>
