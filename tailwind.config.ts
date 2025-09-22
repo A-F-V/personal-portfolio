@@ -75,6 +75,7 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         serif: [
+          "var(--font-instrument-serif)",
           "var(--font-playfair-display)",
           "var(--font-eb-garamond)",
           "Georgia",
