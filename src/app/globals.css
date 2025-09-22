@@ -28,28 +28,27 @@
         --destructive: var(--secondary);
 
         /* Backgrounds (lightest to darkest)*/
-        --muted: var(--h-bg) var(--sat-bg) 91%;
-        --background: var(--h-bg) var(--sat-bg) 95%;
-        --card: var(--h-bg) var(--sat-bg) 99%;
+        --muted: #10263f;
+        --light-background: #0e406f;
+        --background: #02223f;
+        --dark-background: #020a15;
+        --card: #10263f;
         --popover: var(--card);
 
         /* Foregrounds (lightest to darkest)*/
-        --muted-foreground: var(--h-blue) 10% 60%; /*var(--h-blue) 30% 70%;*/
-        --foreground: var(--h-blue) var(--sat-blue) 10%;
+        --muted-foreground: #faf7ef;
+        --foreground: #faf7ef;
         --card-foreground: var(--foreground);
         --popover-foreground: var(--foreground);
 
-        --primary-foreground: var(--card);
-        --secondary-foreground: var(--card);
-        --destructive-foreground: var(--secondary-foreground);
+        --primary-foreground: #10263f;
+        --secondary-foreground: #10263f;
+        --destructive-foreground: #030b18;
 
         /* Borders (lightest to darkest)*/
-        --border: transparent;
-        --input: var(--foreground);
-        --ring: var(--foreground);
-
-        /* Custom dark background color */
-        --dark-bg: rgb(3, 11, 24);
+        --input: #faf7ef;
+        --border: #faf7ef60;
+        --ring: #faf7ef;
 
         --radius: 0.75rem;
     }
@@ -65,6 +64,7 @@
     /* Add global typography styles */
     body {
         @apply bg-background text-foreground;
+
         /* Default letter spacing for the entire site if desired */
         @apply tracking-normal;
     }
@@ -79,6 +79,16 @@
         text-transform: uppercase;
         font-weight: 500;
         letter-spacing: 0.25em;
+    }
+
+    .home-gradient {
+        background-image: linear-gradient(
+            to bottom,
+            var(--light-background) 0%,
+            var(--background) 50vh,
+            var(--dark-background) 100vh,
+            var(--dark-background) 100%
+        );
     }
 }
 

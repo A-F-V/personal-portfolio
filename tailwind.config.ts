@@ -21,36 +21,35 @@ const config: Config = {
                 "spin-slow": "spin 3s linear infinite",
             },
             colors: {
-                border: "#264066",
-                input: "#0f1d35",
-                ring: "#2d628b",
-                background: "#02223f",
-                foreground: "#faf7ef",
+                border: "var(--border)",
+                input: "var(--input)",
+                ring: "var(--ring)",
+                background: "var(--background)",
+                foreground: "var(--foreground)",
                 primary: {
-                    DEFAULT: "#2d628b",
-                    foreground: "#f6efe0",
+                    DEFAULT: "var(--primary)",
+                    foreground: "var(--primary-foreground)",
                 },
                 secondary: {
-                    DEFAULT: "#183159",
-                    foreground: "#f6efe0",
+                    DEFAULT: "var(--secondary)",
+                    foreground: "var(--secondary-foreground)",
                 },
                 destructive: {
-                    DEFAULT: "#eb5c76",
-                    foreground: "#030b18",
+                    DEFAULT: "var(--destructive)",
+                    foreground: "var(--destructive-foreground)",
                 },
                 muted: {
-                    DEFAULT: "#10263f",
-                    foreground: "#cbd5e1",
+                    DEFAULT: "var(--muted)",
+                    foreground: "var(--muted-foreground)",
                 },
                 accent: {
-                    DEFAULT: "#faf7ef",
+                    DEFAULT: "var(--accent)",
                 },
                 popover: {
-                    DEFAULT: "#10263f",
-                    foreground: "#faf7ef",
+                    DEFAULT: "var(--popover)",
                 },
                 card: {
-                    DEFAULT: "#10263f",
+                    DEFAULT: "var(--card)",
                 },
             },
             fontSize: {

@@ -57,7 +57,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 />
             </head>
             <body
-                className={`${inter.className} font-sans antialiased bg-background`}
+                className={`${inter.className} font-sans antialiased bg-no-repeat`}
             >
                 {children}
                 <Analytics />
