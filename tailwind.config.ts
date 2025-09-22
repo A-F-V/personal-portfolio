@@ -1,60 +1,100 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
-export default {
+const config: Config = {
+  darkMode: ["class"],
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
-  container: {
-    center: true,
-    padding: "2rem",
-    screens: {
-      "2xl": "1400px",
-    },
-  },
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
+      animation: {
+        "spin-slow": "spin 3s linear infinite",
+      },
       colors: {
-        background: "var(--background)",
-        midground: "var(--midground)",
-        preground: "var(--preground)",
-        foreground: "var(--foreground)",
-
+        border: "#264066",
+        input: "#0f1d35",
+        ring: "#2d628b",
+        background: "#030b18",
+        foreground: "#faf7ef",
         primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--midground)",
+          DEFAULT: "#2d628b",
+          foreground: "#f6efe0",
         },
-
-        secondary: "var(--secondary)",
-
+        secondary: {
+          DEFAULT: "#183159",
+          foreground: "#f6efe0",
+        },
+        destructive: {
+          DEFAULT: "#eb5c76",
+          foreground: "#030b18",
+        },
+        muted: {
+          DEFAULT: "#10263f",
+          foreground: "#cbd5e1",
+        },
+        accent: {
+          DEFAULT: "#2d628b",
+          foreground: "#faf7ef",
+        },
+        popover: {
+          DEFAULT: "#10263f",
+          foreground: "#faf7ef",
+        },
         card: {
-          DEFAULT: "var(--preground)",
-          foreground: "var(--foreground)",
-          border: "var(--foreground)",
+          DEFAULT: "#10263f",
+          foreground: "#faf7ef",
         },
-
-        border: "var(--foreground)",
+        feature: {
+          surface: "#02223f",
+          deep: "#030b18",
+        },
       },
       fontSize: {
-        "big-title": ["16rem", { lineHeight: "1" }],
+        "big-title": [
+          "16rem",
+          {
+            lineHeight: "1",
+          },
+        ],
       },
       borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        sans: ["var(--main-font)", "sans-serif"],
-        serif: ["var(--main-font)", "serif"],
-        inter: ["var(--font-inter)", "sans-serif"],
-        poppins: ["var(--font-poppins)", "sans-serif"],
+        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+        serif: [
+          "var(--font-playfair-display)",
+          "var(--font-eb-garamond)",
+          "Georgia",
+          "serif",
+        ],
+        accent: ["var(--font-inter)", "system-ui", "sans-serif"],
       },
-
+      minWidth: {
+        prose: "55ch",
+      },
       maxWidth: {
-        prose: "65ch",
+        prose: "55ch",
+      },
+      letterSpacing: {
+        "extra-wide": "0.15em",
+        "super-wide": "0.25em",
       },
     },
   },
-  plugins: [],
-} satisfies Config;
+  plugins: [animate],
+};
+
+export default config;

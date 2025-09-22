@@ -151,7 +151,7 @@ function NavLinks() {
 */
 export default function Home() {
   return (
-    <div className="flex items-center justify-center min-h-screen font-poppins text-foreground px-4 sm:px-0">
+    <div className="flex items-center justify-center min-h-screen font-sans text-foreground px-4 sm:px-0">
       <Container>
         <div className="flex justify-center mb-4">
           <ProfileImage
