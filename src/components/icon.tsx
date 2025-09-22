@@ -1,5 +1,3 @@
-import { CSSProperties } from "react";
-
 import { cva, VariantProps } from "class-variance-authority";
 import { LucideIcon } from "lucide-react";
 
