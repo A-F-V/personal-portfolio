@@ -3,10 +3,11 @@
 import Image from "next/image";
 import { Container } from "@/components/container";
 import {
-    BlueskyIcon,
     GithubIcon,
     Icon,
+    JanusIcon,
     LinkedInIcon,
+    ObsidianIcon,
     RedditIcon,
     SubstackIcon,
     TwitterIcon,
@@ -14,6 +15,7 @@ import {
 import { cn } from "@/lib/utils";
 import { MinorHeading } from "./headings";
 import { IconType } from "./icon";
+import { ProjectCard } from "./project-card";
 
 import { FaCodeCommit } from "react-icons/fa6";
 const socialLinks = [
@@ -42,10 +44,24 @@ const socialLinks = [
         icon: TwitterIcon,
         label: "Twitter",
     },
+];
+
+const featuredProjects = [
     {
-        href: "https://bsky.app/profile/alessandrofv.bsky.social?ref=alessandrofv.com",
-        icon: BlueskyIcon,
-        label: "Bluesky",
+        title: "Janus",
+        keywords: ["flashcards", "spaced repetition"],
+        description:
+            "Transform your documents, videos, notes and highlights into flashcards for Anki and Mochi",
+        href: "https://janus.cards",
+        icon: <Icon icon={JanusIcon} className="size-16" />,
+    },
+    {
+        title: "Arcana",
+        keywords: ["ai", "note-taking"],
+        description:
+            "An all-in-one AI plugin for Obsidian, including chat, text-completion, tagging, note mover, and renamer.",
+        href: "https://github.com/A-F-V/obsidian-arcana",
+        icon: <Icon icon={ObsidianIcon} className="size-16" />,
     },
 ];
 
@@ -85,14 +101,14 @@ export function LandingHero() {
         <div className="flex items-center justify-center min-h-screen px-4 sm:px-6 py-12">
             <Container className="max-w-6xl w-full">
                 <div className="grid gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] items-start">
-                    <div className="flex flex-col gap-10">
-                        <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden">
+                    <div className="flex flex-col gap-10 items-center">
+                        <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden max-w-[300px]">
                             <Image
                                 src="/personal/alessandro.jpeg"
                                 alt="Alessandro Farace"
                                 fill
                                 priority
-                                className="object-cover object-top"
+                                className="object-cover object-top "
                             />
                         </div>
 
@@ -126,6 +142,18 @@ export function LandingHero() {
                             is what inspires me and my work.
                         </p>
                         <MinorHeading icon={headingIcon}>Projects</MinorHeading>
+                        <div className="flex flex-col gap-6">
+                            {featuredProjects.map((project) => (
+                                <ProjectCard
+                                    key={project.title}
+                                    title={project.title}
+                                    keywords={project.keywords}
+                                    description={project.description}
+                                    href={project.href}
+                                    icon={project.icon}
+                                />
+                            ))}
+                        </div>
                         <MinorHeading icon={headingIcon}>Essays</MinorHeading>
                     </div>
                 </div>

@@ -77,7 +77,7 @@ export const MacIcon: IconType = {
 };
 
 export const JanusIcon: IconType = {
-    imgSrc: "/janus-icon.svg",
+    imgSrc: "/janus-no-background.svg",
 };
 
 export const SubstackIcon: IconType = {
