@@ -29,9 +29,9 @@
 
         /* Backgrounds (lightest to darkest)*/
         --muted: #10263f;
-        --light-background: #0e406f;
-        --background: #02223f;
-        --dark-background: #020a15;
+        --light-background: #145ea3;
+        --background: #0e406f;
+        --dark-background: #02223f;
         --card: #10263f;
         --popover: var(--card);
 

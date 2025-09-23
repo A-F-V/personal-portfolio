@@ -80,7 +80,7 @@ export const JanusIcon: IconType = {
 
 export const SubstackIcon: IconType = {
     imgSrc: "/substack.svg",
-    className: "p-1 bg-foreground",
+    className: "p-1 bg-foreground text-transparent",
 };
 
 export const LinkedInIcon: IconType = {
