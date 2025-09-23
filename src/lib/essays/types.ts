@@ -1,15 +1,19 @@
 import type { ZodIssue } from "zod";
 
-export interface EssayFrontMatter {
+export interface EssayFrontMatterBase {
     title: string;
     subtitle?: string;
     heroImage?: string;
     slug: string;
     publishDate: Date;
-    readingTime: number;
+    readingTime?: number;
     tags: string[];
     authors: string[];
     draft: boolean;
+}
+
+export interface EssayFrontMatter extends EssayFrontMatterBase {
+    readingTime: number;
 }
 
 export interface EssayDocument {

@@ -1,5 +1,5 @@
 import { z, type ZodIssue } from "zod";
-import type { EssayFrontMatter } from "../../types";
+import type { EssayFrontMatterBase } from "../../types";
 import { ensureStringArray, toBoolean, toDate, toNumber } from "./coerce";
 
 const slugRegex = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
@@ -22,7 +22,18 @@ const essayFrontMatterRawSchema = z.object({
         .regex(slugRegex, "slug must be lowercase alphanumeric with dashes"),
     publish_date: z.preprocess(toDate, z.date()),
     reading_time: z
-        .preprocess(toNumber, z.number().positive().finite())
+        .preprocess((value) => {
+            if (value === undefined || value === null) {
+                return undefined;
+            }
+
+            if (typeof value === "string" && value.trim().length === 0) {
+                return undefined;
+            }
+
+            return toNumber(value);
+        }, z.number().positive().finite())
+        .optional()
         .describe("reading_time must be a positive number"),
     tags: z.preprocess(ensureStringArray, stringListSchema),
     authors: z.preprocess(ensureStringArray, stringListSchema),
@@ -30,7 +41,7 @@ const essayFrontMatterRawSchema = z.object({
 });
 
 export const essayFrontMatterSchema = essayFrontMatterRawSchema.transform(
-    (raw): EssayFrontMatter => {
+    (raw): EssayFrontMatterBase => {
         const publishDate = raw.publish_date;
 
         const normalizeList = (list: string[]): string[] =>
@@ -74,7 +85,10 @@ export const essayFrontMatterSchema = essayFrontMatterRawSchema.transform(
             heroImage,
             slug: raw.slug.trim(),
             publishDate,
-            readingTime: Math.round(raw.reading_time * 10) / 10,
+            readingTime:
+                typeof raw.reading_time === "number"
+                    ? Math.round(raw.reading_time * 10) / 10
+                    : undefined,
             tags,
             authors,
             draft: raw.draft,

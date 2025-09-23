@@ -2,8 +2,14 @@ import fs from "node:fs/promises";
 import matter from "gray-matter";
 
 import { essayFrontMatterSchema } from "./frontmatter/schema";
+import { estimateReadingTime } from "./reading-time";
 import { toEssayRelativePath } from "../fetch/list-files";
-import { EssayDocument, EssayFrontMatterError } from "../types";
+import {
+    type EssayDocument,
+    EssayFrontMatterError,
+    type EssayFrontMatter,
+    type EssayFrontMatterBase,
+} from "../types";
 
 export async function parseEssayFile(filePath: string): Promise<EssayDocument> {
     const relativePath = toEssayRelativePath(filePath);
@@ -20,7 +26,16 @@ export async function parseEssayFile(filePath: string): Promise<EssayDocument> {
         );
     }
 
-    const frontMatter = parsed.data;
+    const frontMatterBase: EssayFrontMatterBase = parsed.data;
+    const readingTime =
+        typeof frontMatterBase.readingTime === "number"
+            ? frontMatterBase.readingTime
+            : estimateReadingTime(content);
+
+    const frontMatter: EssayFrontMatter = {
+        ...frontMatterBase,
+        readingTime,
+    };
 
     return {
         slug: frontMatter.slug,

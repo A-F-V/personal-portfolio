@@ -4,13 +4,10 @@ authors:
 tags:
   - personal-experience
 title: Overcoming Weak Inclinations
-reading_time: 10
 slug: overcoming-weak-inclinations
-publish_date: 2025-09-22
+publish_date: 2024-10-16
 draft: false
 ---
-> **Timeline:** Central Intelligence → On Feeling Behind → Inclinations → Overcoming (Why & How)
-
 ## Central Intelligence
 
 I was thinking about the comedy Central Intelligence recently. The one with Dwayne "The Rock" Johnson playing the once bullied, obese high schooler turned world-saving agent stud. Oh, and Kevin Hart tags along too. It's not the first film with this hysterical duo, but the only one I know that capitalized on the "little Hart and big Johnson" joke.

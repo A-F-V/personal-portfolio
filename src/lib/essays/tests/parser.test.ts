@@ -8,20 +8,23 @@ import { EssayFrontMatterError } from "@/lib/essays/types";
 
 describe("parseEssayFile", () => {
     it("parses an existing essay and normalizes fields", async () => {
-        const filePath = path.join(process.cwd(), "essays", "Example Essay.md");
+        const filePath = path.join(
+            process.cwd(),
+            "essays",
+            "Overcoming Weak Inclinations.md"
+        );
         const document = await parseEssayFile(filePath);
 
-        expect(document.slug).toBe("test");
+        expect(document.slug).toBe("overcoming-weak-inclinations");
         expect(document.frontMatter).toMatchObject({
-            title: "Example Essay",
-            subtitle: "Just for demonstration",
+            title: "Overcoming Weak Inclinations",
             publishDate: new Date("2025-09-22"),
-            readingTime: 9,
-            tags: ["example"],
+            readingTime: 10,
+            tags: ["personal-experience"],
             authors: ["Alessandro Farace"],
         });
-        expect(typeof document.frontMatter.draft).toBe("boolean");
-        expect(document.filePath).toBe("Example Essay.md");
+        expect(document.frontMatter.draft).toBe(false);
+        expect(document.filePath).toBe("Overcoming Weak Inclinations.md");
     });
 
     it("throws an EssayFrontMatterError when front matter is invalid", async () => {
@@ -36,6 +39,21 @@ describe("parseEssayFile", () => {
         await expect(parseEssayFile(tempFile)).rejects.toBeInstanceOf(
             EssayFrontMatterError
         );
+    });
+
+    it("computes the reading time when it is omitted", async () => {
+        const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), "essay-test-"));
+        const tempFile = path.join(tempDir, "auto-reading-time.md");
+        const words = Array(450).fill("word").join(" ");
+
+        await fs.writeFile(
+            tempFile,
+            `---\ntitle: Auto Reading Time\nslug: auto-reading-time\npublish_date: 2024-01-01\ntags:\n  - auto\nauthors:\n  - Test Author\ndraft: false\n---\n${words}`
+        );
+
+        const document = await parseEssayFile(tempFile);
+
+        expect(document.frontMatter.readingTime).toBe(2);
     });
 
     it("parses every essay file in the repository", async () => {

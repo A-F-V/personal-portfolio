@@ -72,7 +72,9 @@ export default async function EssayPage({ params }: EssayPageProps) {
     return (
         <main className="flex min-h-screen flex-col home-gradient">
             <SiteHeader containerClassName="" />
-            <Essay essay={essay} />
+            <div className="pb-6 lg:pb-12">
+                <Essay essay={essay} />
+            </div>
         </main>
     );
 }
