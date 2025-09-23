@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { getEssayBySlug, listEssaySlugs } from "@/lib/essays";
 import { EssayNotFoundError, type EssayDocument } from "@/lib/essays/types";
 import { Essay } from "@/components/essay";
+import { normalizeUrl } from "@/lib/essays/render/remark/asset-url";
 
 interface EssayPageProps {
     params: Promise<{ slug: string }>;
@@ -36,24 +37,29 @@ export async function generateMetadata({
     try {
         const { slug } = await params;
         const essay = await getEssayBySlug(slug);
-        const { title, subtitle, authors, publishDate } = essay.frontMatter;
-        const description = subtitle ?? essay.content.slice(0, 150);
+        const { title, description, authors, publishDate } = essay.frontMatter;
+        const heroImage = essay.frontMatter.heroImage
+            ? normalizeUrl(essay.frontMatter.heroImage)
+            : undefined;
 
         return {
             title,
-            description: description ?? undefined,
+            description,
             authors: authors.map((name) => ({ name })),
             openGraph: {
                 title,
-                description: description ?? undefined,
+                description,
                 type: "article",
                 publishedTime: publishDate.toISOString(),
                 authors,
+                siteName: "Alessandro Farace",
+                images: heroImage ? [heroImage] : undefined,
             },
             twitter: {
                 card: "summary_large_image",
                 title,
-                description: description ?? undefined,
+                description,
+                images: heroImage ? [heroImage] : undefined,
             },
         };
     } catch (error) {

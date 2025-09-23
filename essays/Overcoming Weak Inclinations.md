@@ -4,6 +4,7 @@ authors:
 tags:
   - personal-experience
 title: Overcoming Weak Inclinations
+description: A personal reflection on transforming weak inclinations into deliberate habits that drive long-term progress.
 slug: overcoming-weak-inclinations
 publish_date: 2024-10-16
 draft: false

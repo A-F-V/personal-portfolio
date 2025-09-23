@@ -4,6 +4,7 @@ authors:
 tags:
   - software
 title: "File Over App: The Philosophical Case"
+description: An argument for prioritizing durable, user-controlled files over proprietary applications.
 slug: file-over-app-philosophical-case
 publish_date: 2024-11-26
 draft: false

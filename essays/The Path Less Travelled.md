@@ -4,6 +4,7 @@ authors:
 tags:
   - personal-experience
 title: The Path Less Travelled
+description: A meditation on embracing uncertainty and choosing unconventional paths in life.
 slug: path-less-travelled
 publish_date: 2024-12-23
 draft: false

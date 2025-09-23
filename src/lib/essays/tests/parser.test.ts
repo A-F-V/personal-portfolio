@@ -18,10 +18,12 @@ describe("parseEssayFile", () => {
         expect(document.slug).toBe("overcoming-weak-inclinations");
         expect(document.frontMatter).toMatchObject({
             title: "Overcoming Weak Inclinations",
-            publishDate: new Date("2025-09-22"),
-            readingTime: 10,
+            publishDate: new Date("2024-10-16"),
+            readingTime: 9.7,
             tags: ["personal-experience"],
             authors: ["Alessandro Farace"],
+            description:
+                "A personal reflection on transforming weak inclinations into deliberate habits that drive long-term progress.",
         });
         expect(document.frontMatter.draft).toBe(false);
         expect(document.filePath).toBe("Overcoming Weak Inclinations.md");
@@ -48,12 +50,12 @@ describe("parseEssayFile", () => {
 
         await fs.writeFile(
             tempFile,
-            `---\ntitle: Auto Reading Time\nslug: auto-reading-time\npublish_date: 2024-01-01\ntags:\n  - auto\nauthors:\n  - Test Author\ndraft: false\n---\n${words}`
+            `---\ntitle: Auto Reading Time\ndescription: An essay without a preset reading time.\nslug: auto-reading-time\npublish_date: 2024-01-01\ntags:\n  - auto\nauthors:\n  - Test Author\ndraft: false\n---\n${words}`
         );
 
         const document = await parseEssayFile(tempFile);
 
-        expect(document.frontMatter.readingTime).toBe(2);
+        expect(document.frontMatter.readingTime).toBeCloseTo(2.6, 1);
     });
 
     it("parses every essay file in the repository", async () => {

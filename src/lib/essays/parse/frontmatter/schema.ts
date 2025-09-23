@@ -9,6 +9,11 @@ const stringListSchema = z.array(z.string().min(1)).nonempty();
 const essayFrontMatterRawSchema = z.object({
     title: z.string().min(1, "title is required"),
     subtitle: z.string().min(1, "subtitle is required").optional(),
+    description: z
+        .preprocess(
+            (value) => (typeof value === "string" ? value.trim() : value),
+            z.string().min(1, "description is required")
+        ),
     hero_image: z
         .preprocess(
             (value) =>
@@ -82,6 +87,7 @@ export const essayFrontMatterSchema = essayFrontMatterRawSchema.transform(
         return {
             title: raw.title.trim(),
             subtitle: raw.subtitle?.trim(),
+            description: raw.description,
             heroImage,
             slug: raw.slug.trim(),
             publishDate,

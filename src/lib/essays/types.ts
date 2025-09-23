@@ -3,6 +3,7 @@ import type { ZodIssue } from "zod";
 export interface EssayFrontMatterBase {
     title: string;
     subtitle?: string;
+    description: string;
     heroImage?: string;
     slug: string;
     publishDate: Date;
