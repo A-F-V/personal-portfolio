@@ -66,15 +66,29 @@ const config: Config = {
                 sm: "calc(var(--radius) - 4px)",
             },
             fontFamily: {
-                sans: ["var(--font-inter)", "system-ui", "sans-serif"],
+                sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
                 serif: [
                     "var(--font-instrument-serif)",
+                    "Instrument Serif",
                     "var(--font-playfair-display)",
+                    "Playfair Display",
                     "var(--font-eb-garamond)",
+                    "EB Garamond",
                     "Georgia",
                     "serif",
                 ],
-                accent: ["var(--font-inter)", "system-ui", "sans-serif"],
+                essay: [
+                    "var(--font-source-serif-4)",
+                    "Source Serif 4",
+                    "Georgia",
+                    "serif",
+                ],
+                accent: [
+                    "var(--font-inter)",
+                    "Inter",
+                    "system-ui",
+                    "sans-serif",
+                ],
             },
             minWidth: {
                 prose: "55ch",

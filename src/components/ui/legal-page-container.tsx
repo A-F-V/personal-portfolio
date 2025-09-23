@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/shadcn";
 import { ReactNode } from "react";
 
 interface LegalPageContainerProps {

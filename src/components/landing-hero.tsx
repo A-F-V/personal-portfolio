@@ -12,13 +12,15 @@ import {
     SubstackIcon,
     TwitterIcon,
 } from "@/components/icon";
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/shadcn";
+import type { EssayFrontMatter } from "@/lib/essays/types";
 import { MinorHeading } from "./headings";
 import { IconType } from "./icon";
 import { ProjectCard } from "./project-card";
 import { EssayLink } from "./essay-link";
 
 import { FaCodeCommit } from "react-icons/fa6";
+
 const socialLinks = [
     {
         href: "https://www.linkedin.com/in/alessandro-farace-587959193/?ref=alessandrofv.com",
@@ -66,26 +68,9 @@ const featuredProjects = [
     },
 ];
 
-const featuredEssays = [
-    {
-        title: "The Path Less Traveled",
-        link: "https://thoughts.alessandrofv.com/p/4-the-path-less-travelled?r=2qkftu",
-        datePublished: "2024-12-23",
-        tags: ["personal experience"],
-    },
-    {
-        title: "File Over App: The Philosophical Case",
-        link: "https://thoughts.alessandrofv.com/p/3-file-over-app-the-philisophical?r=2qkftu",
-        datePublished: "2024-11-26",
-        tags: ["software"],
-    },
-    {
-        title: "Overcoming Weak Inclinations",
-        link: "https://thoughts.alessandrofv.com/p/2-overcoming-weak-inclinations?r=2qkftu",
-        datePublished: "2024-09-16",
-        tags: ["personal experience"],
-    },
-];
+interface LandingHeroProps {
+    essays: EssayFrontMatter[];
+}
 
 function SocialLinks({ className }: { className?: string }) {
     return (
@@ -114,11 +99,10 @@ const headingIcon: IconType = {
 };
 
 function Highlight({ children }: { children: React.ReactNode }) {
-    //bg-yellow-500/40 inline-block
     return <span className="font-bold underline ">{children}</span>;
 }
 
-export function LandingHero() {
+export function LandingHero({ essays }: LandingHeroProps) {
     return (
         <Container className="max-w-7xl w-full">
             <div className="grid gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] items-start">
@@ -149,19 +133,18 @@ export function LandingHero() {
                                 <Highlight>education and learning</Highlight>.
                                 Despite the explosion of free online educational
                                 content, graduates have not seen an improvement
-                                in intellectual or career outcomes; in 2025, the
-                                situation is actually worsening.
+                                in intellectual or career outcomes.
                             </p>
                             <p>
-                                And yet, pedagogists have strong evidence that
-                                better methods and tools of instruction can
-                                nurture students to the ability of the
-                                todays&apos; top 5%.
+                                And yet, educational researchers have strong
+                                evidence that better methods and tools of
+                                instruction can nurture students to the ability
+                                of today&apos;s top 5%.
                             </p>
                             <p>
                                 This opportunity to{" "}
                                 <Highlight>
-                                    radically realize student&apos;s potential
+                                    radically realize students&apos; potential
                                 </Highlight>{" "}
                                 is what inspires me and my work.
                             </p>
@@ -186,15 +169,23 @@ export function LandingHero() {
                         <MinorHeading icon={headingIcon}>Essays</MinorHeading>
 
                         <div className="flex flex-col gap-3">
-                            {featuredEssays.map((essay) => (
-                                <EssayLink
-                                    key={`${essay.title}-${essay.datePublished}`}
-                                    title={essay.title}
-                                    link={essay.link}
-                                    datePublished={essay.datePublished}
-                                    tags={essay.tags}
-                                />
-                            ))}
+                            {essays
+                                .sort(
+                                    (a, b) =>
+                                        b.publishDate.getTime() -
+                                        a.publishDate.getTime()
+                                )
+                                .map((essay) => (
+                                    <EssayLink
+                                        key={`${essay.slug}-${essay.publishDate}`}
+                                        title={essay.title}
+                                        subtitle={essay.subtitle}
+                                        link={`/essay/${essay.slug}`}
+                                        datePublished={essay.publishDate}
+                                        readingTime={essay.readingTime}
+                                        tags={essay.tags}
+                                    />
+                                ))}
                         </div>
                     </div>
                 </div>
