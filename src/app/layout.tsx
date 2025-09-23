@@ -5,6 +5,7 @@ import {
     Instrument_Serif,
     Inter,
     Playfair_Display,
+    Source_Serif_4,
 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -32,6 +33,12 @@ const inter = Inter({
     variable: "--font-inter",
 });
 
+const sourceSerif4 = Source_Serif_4({
+    subsets: ["latin"],
+    variable: "--font-source-serif-4",
+    weight: ["400", "600", "700"],
+});
+
 export const metadata: Metadata = {
     title: "Alessandro Farace",
     description: "Personal website of Alessandro Farace",
@@ -48,7 +55,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     return (
         <html
             lang="en"
-            className={`${instrumentSerif.variable} ${playfairDisplay.variable} ${ebGaramond.variable} ${inter.variable}`}
+            className={`${instrumentSerif.variable} ${playfairDisplay.variable} ${ebGaramond.variable} ${inter.variable} ${sourceSerif4.variable}`}
         >
             <head>
                 <link
@@ -56,9 +63,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
                 />
             </head>
-            <body
-                className={`${inter.className} font-sans antialiased bg-no-repeat`}
-            >
+            <body className={`font-sans antialiased bg-no-repeat`}>
                 {children}
                 <Analytics />
                 <GoogleAnalytics gaId="G-CQ57BSS24F" />

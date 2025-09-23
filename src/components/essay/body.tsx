@@ -12,7 +12,8 @@ export async function EssayBody({ essay }: EssayBodyProps) {
     return (
         <div
             className={cn(
-                "flex flex-col gap-6 text-base leading-7 text-foreground/90",
+                "flex flex-col gap-6 text-lg leading-8 text-foreground/90 md:text-xl md:leading-9",
+                "!font-essay",
                 "[&_h2]:scroll-mt-24 [&_h2]:text-4xl [&_h2]:font-semibold [&_h2]:tracking-tight",
                 "[&_h3]:scroll-mt-24 [&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:tracking-tight",
                 "[&_h4]:scroll-mt-20 [&_h4]:text-xl [&_h4]:font-semibold [&_h4]:tracking-tight",
@@ -23,7 +24,7 @@ export async function EssayBody({ essay }: EssayBodyProps) {
                 "[&_li]:pl-1",
                 "[&_code]:rounded [&_code]:bg-muted [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-sm [&_code]:text-foreground",
                 "[&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:bg-muted [&_pre]:p-4 [&_pre]:text-sm [&_pre]:font-mono [&_pre]:leading-relaxed [&_pre_code]:bg-transparent [&_pre_code]:p-0 [&_pre_code]:text-inherit",
-                "[&_img]:mx-auto [&_img]:my-6 [&_img]:max-w-full [&_img]:rounded-xl [&_img]:shadow-lg",
+                "[&_img]:mx-auto [&_img]:my-6 [&_img]:block [&_img]:max-h-[400px] [&_img]:max-w-full [&_img]:rounded-xl [&_img]:object-contain [&_img]:shadow-lg",
                 "[&_figure]:space-y-3 [&_figcaption]:text-center [&_figcaption]:text-sm [&_figcaption]:text-muted-foreground",
                 "[&_hr]:my-12 [&_hr]:border-foreground/10",
                 "[&_table]:w-full [&_table]:border-collapse [&_th]:border-b [&_th]:border-border [&_th]:bg-muted [&_th]:px-3 [&_th]:py-2 [&_th]:text-left [&_th]:text-sm [&_td]:border-b [&_td]:border-border/60 [&_td]:px-3 [&_td]:py-2 [&_td]:text-sm"
