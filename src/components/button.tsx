@@ -11,7 +11,6 @@ const buttonVariants = cva(
         "group rounded-md text-sm font-medium relative overflow-hidden",
         // Interactive states and transitions
         "transition-all duration-300 ease-out transform",
-        "hover:shadow-lg hover:-translate-y-[4px] ", // Enhanced elevation with subtle lift and rotation
         // Disabled state
         "disabled:pointer-events-none disabled:opacity-50",
         // SVG/Icon styles within button

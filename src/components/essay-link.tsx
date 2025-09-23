@@ -14,7 +14,6 @@ type EssayLinkProps = {
 
 export function EssayLink({
     title,
-    subtitle,
     datePublished,
     readingTime,
     tags,
@@ -47,12 +46,12 @@ export function EssayLink({
                     {formattedDate}
                 </span>
             </div>
-
+            {/* 
             {subtitle ? (
                 <p className="mt-1 text-sm text-foreground/80 line-clamp-2">
                     {subtitle}
                 </p>
-            ) : null}
+            ) : null} */}
 
             {tags?.length || readingTimeLabel ? (
                 <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.18em] text-foreground/60">
@@ -62,7 +61,7 @@ export function EssayLink({
                         </span>
                     ) : null}
                     {readingTimeLabel ? (
-                        <span className="font-mono tracking-tight">
+                        <span className="ml-auto font-mono tracking-tight text-foreground/40">
                             {readingTimeLabel}
                         </span>
                     ) : null}

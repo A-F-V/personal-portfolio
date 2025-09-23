@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
+import { SiteHeader } from "@/components/site-header";
 import { getEssayBySlug, listEssaySlugs } from "@/lib/essays";
 import { EssayNotFoundError, type EssayDocument } from "@/lib/essays/types";
-import { renderEssayContent } from "@/lib/essays/render";
-import { formatDate } from "@/lib/utils/format";
+import { Essay } from "@/components/essay";
 
 interface EssayPageProps {
     params: Promise<{ slug: string }>;
@@ -68,37 +68,11 @@ export async function generateMetadata({
 export default async function EssayPage({ params }: EssayPageProps) {
     const { slug } = await params;
     const essay = await resolveEssay(slug);
-    const essayContent = await renderEssayContent(essay);
-    const { frontMatter } = essay;
-
-    const formattedDate = formatDate(frontMatter.publishDate);
-    const readingTimeLabel = `${Math.round(frontMatter.readingTime)} min read`;
-    const tagLabel = frontMatter.tags.join(" • ");
 
     return (
-        <article className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-6 py-12">
-            <header className="flex flex-col gap-4">
-                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-[0.18em] text-foreground/60">
-                    <span>{formattedDate}</span>
-                    <span>{readingTimeLabel}</span>
-                    <span>{tagLabel}</span>
-                </div>
-                <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                    {frontMatter.title}
-                </h1>
-                {frontMatter.subtitle ? (
-                    <p className="text-lg text-foreground/80">
-                        {frontMatter.subtitle}
-                    </p>
-                ) : null}
-                <div className="text-sm text-foreground/70">
-                    {frontMatter.authors.join(", ")}
-                </div>
-            </header>
-
-            <div className="flex flex-col gap-6 text-base leading-7 text-foreground/90">
-                {essayContent}
-            </div>
-        </article>
+        <main className="flex min-h-screen flex-col home-gradient">
+            <SiteHeader containerClassName="" />
+            <Essay essay={essay} />
+        </main>
     );
 }

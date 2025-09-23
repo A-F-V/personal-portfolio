@@ -9,6 +9,13 @@ const stringListSchema = z.array(z.string().min(1)).nonempty();
 const essayFrontMatterRawSchema = z.object({
     title: z.string().min(1, "title is required"),
     subtitle: z.string().min(1, "subtitle is required").optional(),
+    hero_image: z
+        .preprocess(
+            (value) =>
+                typeof value === "string" ? value.trim() : value,
+            z.string().min(1, "hero_image must be a non-empty string")
+        )
+        .optional(),
     slug: z
         .string()
         .min(1, "slug is required")
@@ -56,9 +63,15 @@ export const essayFrontMatterSchema = essayFrontMatterRawSchema.transform(
             throw new z.ZodError(issues);
         }
 
+        const heroImage =
+            typeof raw.hero_image === "string" && raw.hero_image.length > 0
+                ? raw.hero_image
+                : undefined;
+
         return {
             title: raw.title.trim(),
             subtitle: raw.subtitle?.trim(),
+            heroImage,
             slug: raw.slug.trim(),
             publishDate,
             readingTime: Math.round(raw.reading_time * 10) / 10,
