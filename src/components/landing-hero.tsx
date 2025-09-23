@@ -133,19 +133,18 @@ export function LandingHero({ essays }: LandingHeroProps) {
                                 <Highlight>education and learning</Highlight>.
                                 Despite the explosion of free online educational
                                 content, graduates have not seen an improvement
-                                in intellectual or career outcomes; in 2025, the
-                                situation is actually worsening.
+                                in intellectual or career outcomes.
                             </p>
                             <p>
-                                And yet, pedagogists have strong evidence that
-                                better methods and tools of instruction can
-                                nurture students to the ability of the
-                                todays&apos; top 5%.
+                                And yet, educational researchers have strong
+                                evidence that better methods and tools of
+                                instruction can nurture students to the ability
+                                of today&apos;s top 5%.
                             </p>
                             <p>
                                 This opportunity to{" "}
                                 <Highlight>
-                                    radically realize student&apos;s potential
+                                    radically realize students&apos; potential
                                 </Highlight>{" "}
                                 is what inspires me and my work.
                             </p>
