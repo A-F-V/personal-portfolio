@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { LucideIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/shadcn";
 import Image from "next/image";
 import { LuGithub } from "react-icons/lu";
 import { FaLinkedin } from "react-icons/fa6";

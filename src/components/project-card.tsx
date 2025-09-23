@@ -2,7 +2,7 @@ import { type ReactNode } from "react";
 import Link from "next/link";
 import { FiArrowUpRight } from "react-icons/fi";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/shadcn";
 
 interface ProjectCardProps {
     title: string;

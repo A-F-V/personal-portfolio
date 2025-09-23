@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/shadcn";
 import { motion, Variants } from "framer-motion";
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
