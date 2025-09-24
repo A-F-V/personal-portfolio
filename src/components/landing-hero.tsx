@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { Container } from "@/components/container";
 import {
     GithubIcon,
     Icon,
