@@ -1,60 +1,108 @@
 import type { Config } from "tailwindcss";
+import animate from "tailwindcss-animate";
 
-export default {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  container: {
-    center: true,
-    padding: "2rem",
-    screens: {
-      "2xl": "1400px",
-    },
-  },
-  theme: {
-    extend: {
-      colors: {
-        background: "var(--background)",
-        midground: "var(--midground)",
-        preground: "var(--preground)",
-        foreground: "var(--foreground)",
-
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--midground)",
+const config: Config = {
+    darkMode: ["class"],
+    content: [
+        "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+        "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    ],
+    theme: {
+        container: {
+            center: true,
+            padding: "2rem",
+            screens: {
+                "2xl": "1400px",
+            },
         },
-
-        secondary: "var(--secondary)",
-
-        card: {
-          DEFAULT: "var(--preground)",
-          foreground: "var(--foreground)",
-          border: "var(--foreground)",
+        extend: {
+            animation: {
+                "spin-slow": "spin 3s linear infinite",
+            },
+            colors: {
+                border: "var(--border)",
+                input: "var(--input)",
+                ring: "var(--ring)",
+                background: "var(--background)",
+                foreground: "var(--foreground)",
+                primary: {
+                    DEFAULT: "var(--primary)",
+                    foreground: "var(--primary-foreground)",
+                },
+                secondary: {
+                    DEFAULT: "var(--secondary)",
+                    foreground: "var(--secondary-foreground)",
+                },
+                destructive: {
+                    DEFAULT: "var(--destructive)",
+                    foreground: "var(--destructive-foreground)",
+                },
+                muted: {
+                    DEFAULT: "var(--muted)",
+                    foreground: "var(--muted-foreground)",
+                },
+                accent: {
+                    DEFAULT: "var(--accent)",
+                },
+                popover: {
+                    DEFAULT: "var(--popover)",
+                },
+                card: {
+                    DEFAULT: "var(--card)",
+                },
+            },
+            fontSize: {
+                "big-title": [
+                    "16rem",
+                    {
+                        lineHeight: "1",
+                    },
+                ],
+            },
+            borderRadius: {
+                lg: "var(--radius)",
+                md: "calc(var(--radius) - 2px)",
+                sm: "calc(var(--radius) - 4px)",
+            },
+            fontFamily: {
+                sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+                serif: [
+                    "var(--font-instrument-serif)",
+                    "Instrument Serif",
+                    "var(--font-playfair-display)",
+                    "Playfair Display",
+                    "var(--font-eb-garamond)",
+                    "EB Garamond",
+                    "Georgia",
+                    "serif",
+                ],
+                essay: [
+                    "var(--font-source-serif-4)",
+                    "Source Serif 4",
+                    "Georgia",
+                    "serif",
+                ],
+                accent: [
+                    "var(--font-inter)",
+                    "Inter",
+                    "system-ui",
+                    "sans-serif",
+                ],
+            },
+            minWidth: {
+                prose: "55ch",
+            },
+            maxWidth: {
+                prose: "55ch",
+            },
+            letterSpacing: {
+                "extra-wide": "0.15em",
+                "super-wide": "0.25em",
+            },
         },
-
-        border: "var(--foreground)",
-      },
-      fontSize: {
-        "big-title": ["16rem", { lineHeight: "1" }],
-      },
-      borderRadius: {
-        lg: `var(--radius)`,
-        md: `calc(var(--radius) - 2px)`,
-        sm: "calc(var(--radius) - 4px)",
-      },
-      fontFamily: {
-        sans: ["var(--main-font)", "sans-serif"],
-        serif: ["var(--main-font)", "serif"],
-        inter: ["var(--font-inter)", "sans-serif"],
-        poppins: ["var(--font-poppins)", "sans-serif"],
-      },
-
-      maxWidth: {
-        prose: "65ch",
-      },
     },
-  },
-  plugins: [],
-} satisfies Config;
+    plugins: [animate],
+};
+
+export default config;

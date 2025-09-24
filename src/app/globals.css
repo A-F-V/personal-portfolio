@@ -2,32 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Old Scheme https://coolors.co/030027-183159-2d628b-f6efe0-faf7ef-eb5c76 */
+
 @layer base {
-  :root {
-    --dark-night: #020016;
-    --oxford-blue: #141429;
-    --delft-blue: #23395b;
-    --lapiz-lazuli: #2c5c82;
-    --old-lace: #f2eada;
-    --floral-white: #fcf7ec;
-    --powder: #f8f8f8;
-    --crayola-pink: #ed5574;
+    :root {
+        /* We have 3 colors: The palette for background (light), for foreground (dark), and for accent
+    - Beige for background
+    - Blue for foreground
+    - Red for accent
 
-    --primary: var(--lapiz-lazuli);
-    --secondary: var(--crayola-pink);
+    These all have the same saturation (80%)
+    */
 
-    /* --background: var(--old-lace);
-    --midground: var(--floral-white);
-    --preground: var(--powder);
-    --foreground: var(--oxford-blue); */
+        --h-bg: 32;
+        --h-blue: 225;
+        --h-red: 10;
+        --sat-blue: 60%;
+        --sat-red: 80%;
+        --lum-blue: 30%;
+        --lum-red: 50%;
+        --sat-bg: 60%;
 
-    --background: var(--dark-night);
-    --midground: var(--oxford-blue);
-    --preground: var(--lapiz-lazuli);
-    --foreground: var(--floral-white);
+        --primary: var(--h-blue) var(--sat-blue) var(--lum-blue);
+        --secondary: var(--h-red) var(--sat-red) var(--lum-red);
+        --destructive: var(--secondary);
 
-    --main-font: "EB Garamond";
+        /* Backgrounds (lightest to darkest)*/
+        --muted: #10263f;
+        --light-background: #0b4f8f;
+        --background: #0e406f;
+        --dark-background: #02223f;
+        --card: #10263f;
+        --popover: var(--card);
 
-    --radius: 0.75rem;
-  }
+        /* Foregrounds (lightest to darkest)*/
+        --muted-foreground: #faf7ef;
+        --foreground: #faf7ef;
+        --card-foreground: var(--foreground);
+        --popover-foreground: var(--foreground);
+
+        --primary-foreground: #10263f;
+        --secondary-foreground: #10263f;
+        --destructive-foreground: #030b18;
+
+        /* Borders (lightest to darkest)*/
+        --input: #faf7ef;
+        --border: #faf7ef60;
+        --ring: #faf7ef;
+
+        --radius: 0.75rem;
+    }
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+    * {
+        @apply border-border;
+    }
+    /* Add global typography styles */
+    body {
+        @apply bg-background text-foreground;
+
+        /* Default letter spacing for the entire site if desired */
+        @apply tracking-normal;
+    }
+}
+
+@layer utilities {
+    .bg-dark-bg {
+        background-color: var(--dark-bg);
+    }
+
+    .accent-style {
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 0.25em;
+    }
+
+    .home-gradient {
+        background-image: linear-gradient(
+            to bottom,
+            var(--light-background) 0%,
+            var(--background) 50vh,
+            var(--dark-background) 100vh,
+            var(--dark-background) 100%
+        );
+    }
+}
+
+.pulse-animation {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

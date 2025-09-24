@@ -1,107 +1,104 @@
 import { cva, VariantProps } from "class-variance-authority";
 import { LucideIcon } from "lucide-react";
 
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/shadcn";
 import Image from "next/image";
+import { LuGithub } from "react-icons/lu";
+import { FaLinkedin } from "react-icons/fa6";
+import { FaBluesky } from "react-icons/fa6";
+import { FaReddit } from "react-icons/fa6";
+import { FaTwitter } from "react-icons/fa6";
 
 export type IconType = {
-  lucide?: LucideIcon;
-  imgSrc?: string;
-  fontAwesome?: string;
-  background?: string;
+    img?: LucideIcon | React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+    imgSrc?: string;
+    fontAwesome?: string;
+    className?: string;
 };
 
-export const iconVariants = cva(["size-4"], {
-  variants: {
-    variant: {
-      default: "",
+export const iconVariants = cva(["size-6"], {
+    variants: {
+        variant: {
+            default: "",
+        },
     },
-  },
 });
 type IconProps = VariantProps<typeof iconVariants> & {
-  className?: string;
-  size?: number;
-  icon: IconType;
+    className?: string;
+    size?: number;
+    icon: IconType;
 };
 
-const cls = "rounded-sm";
-export function Icon({ variant, className, icon, size }: IconProps) {
-  return (
-    <>
-      {icon.lucide || icon.fontAwesome ? (
-        <div
-          className={cn(
-            iconVariants({ variant }),
-            className,
-            `h-[${size}px]`,
-            cls
-          )}
-        >
-          {icon.lucide && <icon.lucide className="w-full h-full" />}
-          {icon.fontAwesome && (
-            <i className={`fa-brands fa-${icon.fontAwesome}`} />
-          )}
-        </div>
-      ) : (
-        icon.imgSrc && (
-          <Image
-            src={icon.imgSrc}
-            alt="Icon"
-            className={cn(
-              iconVariants({ variant }),
-              className,
-              `size-[${size}px]`,
-              icon.background,
-              cls
+export function Icon({ variant, className, icon }: IconProps) {
+    const baseClasses = cn(
+        "flex items-center justify-center rounded-sm overflow-hidden",
+        iconVariants({ variant }),
+        className
+    );
+
+    return (
+        <>
+            {icon.img ? (
+                <div className={baseClasses}>
+                    {icon.img && <icon.img className="w-full h-full" />}
+                </div>
+            ) : (
+                icon.imgSrc && (
+                    <div className={baseClasses}>
+                        <Image
+                            src={icon.imgSrc}
+                            alt="Icon"
+                            className={cn(
+                                "w-full h-full object-contain",
+                                icon.className
+                            )}
+                            width={32}
+                            height={32}
+                        />
+                    </div>
+                )
             )}
-            width={size}
-            height={size}
-          />
-        )
-      )}
-    </>
-  );
+        </>
+    );
 }
 
 export const ObsidianIcon: IconType = {
-  imgSrc: "/obsidian-icon.svg",
+    imgSrc: "/obsidian-icon.svg",
 };
 
 export const ReadwiseIcon: IconType = {
-  imgSrc: "/readwise-icon.svg",
-  background: "bg-foreground",
+    imgSrc: "/readwise-icon.svg",
 };
 
 export const MacIcon: IconType = {
-  imgSrc: "/mac-icon.png",
-  background: "bg-foreground",
+    imgSrc: "/mac-icon.png",
 };
 
 export const JanusIcon: IconType = {
-  imgSrc: "/janus-icon.svg",
+    imgSrc: "/janus-no-background.svg",
 };
 
 export const SubstackIcon: IconType = {
-  imgSrc: "/substack.svg",
-  background: "bg-foreground",
+    imgSrc: "/substack.svg",
+    className: "p-1 bg-foreground text-transparent",
 };
 
 export const LinkedInIcon: IconType = {
-  fontAwesome: "linkedin",
+    img: FaLinkedin,
 };
 
 export const GithubIcon: IconType = {
-  fontAwesome: "github",
+    img: LuGithub,
 };
 
 export const BlueskyIcon: IconType = {
-  fontAwesome: "bluesky",
+    img: FaBluesky,
 };
 
 export const RedditIcon: IconType = {
-  fontAwesome: "reddit",
+    img: FaReddit,
 };
 
 export const TwitterIcon: IconType = {
-  fontAwesome: "twitter",
+    img: FaTwitter,
 };

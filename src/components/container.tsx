@@ -1,22 +1,16 @@
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils/shadcn";
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
 export function Container({ children, className, ...props }: ContainerProps) {
-  return (
-    <div className={cn("", "shadow-[0_0_20px_var(--midground)]")}>
-      <div
-        className={cn(
-          "relative p-10 bg-midground",
-          "rounded-3xl shadow-[inset_0_0_20px_var(--background)]",
-          className
-        )}
-        {...props}
-      >
-        {children}
-      </div>
-    </div>
-  );
+    return (
+        <div
+            className={cn("relative p-10 ", "rounded-3xl ", className)}
+            {...props}
+        >
+            {children}
+        </div>
+    );
 }
