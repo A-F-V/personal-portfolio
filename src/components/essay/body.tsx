@@ -12,7 +12,7 @@ export async function EssayBody({ essay }: EssayBodyProps) {
     return (
         <div
             className={cn(
-                "flex flex-col gap-6 text-base lg:text-lg leading-8 text-foreground/90 md:text-xl md:leading-9",
+                "flex flex-col gap-3 lg:gap-6 text-base lg:text-lg leading-7 text-foreground/90 md:text-xl md:leading-9",
                 "!font-essay",
                 "[&_h2]:scroll-mt-24 [&_h2]:text-4xl [&_h2]:font-semibold [&_h2]:tracking-tight",
                 "[&_h3]:scroll-mt-24 [&_h3]:text-2xl [&_h3]:font-semibold [&_h3]:tracking-tight",

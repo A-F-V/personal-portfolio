@@ -104,9 +104,9 @@ function Highlight({ children }: { children: React.ReactNode }) {
 
 export function LandingHero({ essays }: LandingHeroProps) {
     return (
-        <Container className="max-w-7xl w-full">
-            <div className="grid gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] items-start">
-                <div className="flex flex-col gap-10 items-center">
+        <div className="max-w-full lg:max-w-7xl w-full">
+            <div className="grid gap-4 lg:gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] items-start">
+                <div className="flex flex-col gap-10 items-center w-full min-w-0">
                     <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden max-w-[300px]">
                         <Image
                             src="/personal/alessandro.jpeg"
@@ -120,7 +120,7 @@ export function LandingHero({ essays }: LandingHeroProps) {
                     <SocialLinks className="mx-auto" />
                 </div>
 
-                <div className="flex flex-col gap-8 max-w-[60ch]">
+                <div className="flex flex-col gap-8 max-w-[60ch] w-full min-w-0 px-2">
                     <div>
                         <MinorHeading className="text-8xl">
                             Alessandro Farace
@@ -190,6 +190,6 @@ export function LandingHero({ essays }: LandingHeroProps) {
                     </div>
                 </div>
             </div>
-        </Container>
+        </div>
     );
 }

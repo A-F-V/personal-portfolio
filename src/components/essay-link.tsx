@@ -42,7 +42,7 @@ export function EssayLink({
                 <span className="truncate text-lg font-bold text-foreground transition-colors duration-150 group-hover:underline group-focus-visible:underline">
                     {title}
                 </span>
-                <span className="whitespace-nowrap font-mono text-xs uppercase tracking-[0.18em] text-accent/80">
+                <span className="hidden lg:block whitespace-nowrap font-mono text-xs uppercase tracking-[0.18em] text-accent/80">
                     {formattedDate}
                 </span>
             </div>

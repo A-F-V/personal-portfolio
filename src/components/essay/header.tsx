@@ -13,7 +13,7 @@ export function EssayHeader({ frontMatter }: EssayHeaderProps) {
     return (
         <header className="flex flex-col gap-6">
             <div className="flex flex-col gap-2">
-                <h1 className="font-serif text-5xl tracking-tight text-foreground sm:text-6xl">
+                <h1 className="font-serif text-6xl tracking-tight text-foreground">
                     {frontMatter.title}
                 </h1>
                 {frontMatter.subtitle ? (
