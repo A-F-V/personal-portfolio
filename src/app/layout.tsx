@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import {
     EB_Garamond,
@@ -45,6 +45,13 @@ export const metadata: Metadata = {
     icons: {
         icon: "/profile.jpg",
     },
+};
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    viewportFit: "cover",
 };
 
 type RootLayoutProps = {
