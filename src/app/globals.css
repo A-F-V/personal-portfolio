@@ -52,6 +52,37 @@
 
         --radius: 0.75rem;
     }
+
+    /* Light mode theme for essay pages */
+    .light-mode {
+        --primary: #1e3a8a;
+        --secondary: #e8593c;
+        --destructive: #e8593c;
+
+        /* Backgrounds (lightest to darkest)*/
+        --muted: #f6efe0;
+        --background: #faf7ef;
+        --card: #fcfbf8;
+        --popover: #fcfbf8;
+
+        /* Foregrounds (lightest to darkest)*/
+        --muted-foreground: #8593a5;
+        --foreground: #0e1b3d;
+        --card-foreground: #0e1b3d;
+        --popover-foreground: #0e1b3d;
+
+        --primary-foreground: #fcfbf8;
+        --secondary-foreground: #fcfbf8;
+        --destructive-foreground: #fcfbf8;
+
+        /* Borders (lightest to darkest)*/
+        --border: #f6efe0;
+        --input: #f6efe0;
+        --ring: #f6efe0;
+
+        /* Force color inheritance to use the light mode foreground */
+        color: var(--foreground);
+    }
 }
 
 @layer base {
