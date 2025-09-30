@@ -10,9 +10,10 @@ export function EssayFooter() {
             )}
         >
             <p>
-                I write these essays to explore better ways of thinking,
-                learning, and remembering. If you found this valuable, you might
-                enjoy{" "}
+                I write these essays to explore tools for better thinking,
+                learning, and remembering, as well as the business mindset
+                required to bring these tools into existence. If you found this
+                valuable, you might enjoy{" "}
                 <Link
                     href="https://janus.cards"
                     target="_blank"

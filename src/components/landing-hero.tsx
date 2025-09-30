@@ -27,9 +27,9 @@ const socialLinks = [
         label: "LinkedIn",
     },
     {
-        href: "https://github.com/A-F-V?ref=alessandrofv.com",
-        icon: GithubIcon,
-        label: "GitHub",
+        href: "https://x.com/AFV_7?ref=alessandrofv.com",
+        icon: TwitterIcon,
+        label: "Twitter",
     },
     {
         href: "https://alessandrofv.substack.com/?ref=alessandrofv.com",
@@ -37,15 +37,15 @@ const socialLinks = [
         label: "Substack",
     },
     {
-        href: "https://www.reddit.com/user/AFV_7/?ref=alessandrofv.com",
-        icon: RedditIcon,
-        label: "Reddit",
+        href: "https://github.com/A-F-V?ref=alessandrofv.com",
+        icon: GithubIcon,
+        label: "GitHub",
     },
-    {
-        href: "https://x.com/AFV_7?ref=alessandrofv.com",
-        icon: TwitterIcon,
-        label: "Twitter",
-    },
+    // {
+    //     href: "https://www.reddit.com/user/AFV_7/?ref=alessandrofv.com",
+    //     icon: RedditIcon,
+    //     label: "Reddit",
+    // },
 ];
 
 const featuredProjects = [
@@ -103,7 +103,7 @@ function Highlight({ children }: { children: React.ReactNode }) {
 
 export function LandingHero({ essays }: LandingHeroProps) {
     return (
-        <div className="max-w-full lg:max-w-7xl w-full">
+        <div className="max-w-full lg:max-w-7xl w-full flex justify-center">
             <div className="grid gap-4 lg:gap-10 lg:grid-cols-[minmax(0,300px)_minmax(0,1fr)] items-start">
                 <div className="flex flex-col gap-10 items-center w-full min-w-0">
                     <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden max-w-[300px]">
