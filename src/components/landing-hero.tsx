@@ -7,7 +7,6 @@ import {
     JanusIcon,
     LinkedInIcon,
     ObsidianIcon,
-    RedditIcon,
     SubstackIcon,
     TwitterIcon,
 } from "@/components/icon";
