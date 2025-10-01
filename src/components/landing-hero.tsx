@@ -120,9 +120,9 @@ export function LandingHero({ essays }: LandingHeroProps) {
 
                 <div className="flex flex-col gap-8 max-w-[60ch] w-full min-w-0 px-2">
                     <div>
-                        <MinorHeading className="text-8xl">
+                        <h1 className="text-8xl font-serif mb-6">
                             Alessandro Farace
-                        </MinorHeading>
+                        </h1>
                         <div className="flex flex-col gap-4">
                             <p>
                                 I&apos;m a{" "}
