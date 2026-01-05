@@ -9,15 +9,13 @@ const stringListSchema = z.array(z.string().min(1)).nonempty();
 const essayFrontMatterRawSchema = z.object({
     title: z.string().min(1, "title is required"),
     subtitle: z.string().min(1, "subtitle is required").optional(),
-    description: z
-        .preprocess(
-            (value) => (typeof value === "string" ? value.trim() : value),
-            z.string().min(1, "description is required")
-        ),
+    description: z.preprocess(
+        (value) => (typeof value === "string" ? value.trim() : value),
+        z.string().min(1, "description is required")
+    ),
     hero_image: z
         .preprocess(
-            (value) =>
-                typeof value === "string" ? value.trim() : value,
+            (value) => (typeof value === "string" ? value.trim() : value),
             z.string().min(1, "hero_image must be a non-empty string")
         )
         .optional(),
@@ -43,6 +41,7 @@ const essayFrontMatterRawSchema = z.object({
     tags: z.preprocess(ensureStringArray, stringListSchema),
     authors: z.preprocess(ensureStringArray, stringListSchema),
     draft: z.preprocess(toBoolean, z.boolean()),
+    canonical_url: z.url().optional(),
 });
 
 export const essayFrontMatterSchema = essayFrontMatterRawSchema.transform(
@@ -98,6 +97,7 @@ export const essayFrontMatterSchema = essayFrontMatterRawSchema.transform(
             tags,
             authors,
             draft: raw.draft,
+            canonicalUrl: raw.canonical_url,
         };
     }
 );

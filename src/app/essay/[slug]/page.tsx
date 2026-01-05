@@ -37,7 +37,8 @@ export async function generateMetadata({
     try {
         const { slug } = await params;
         const essay = await getEssayBySlug(slug);
-        const { title, description, authors, publishDate } = essay.frontMatter;
+        const { title, description, authors, publishDate, canonicalUrl } =
+            essay.frontMatter;
         const heroImage = essay.frontMatter.heroImage
             ? normalizeUrl(essay.frontMatter.heroImage)
             : undefined;
@@ -46,6 +47,9 @@ export async function generateMetadata({
             title,
             description,
             authors: authors.map((name) => ({ name })),
+            alternates: {
+                canonical: canonicalUrl,
+            },
             openGraph: {
                 title,
                 description,
@@ -76,9 +80,9 @@ export default async function EssayPage({ params }: EssayPageProps) {
     const essay = await resolveEssay(slug);
 
     return (
-        <main className="flex min-h-screen flex-col home-gradient">
-            <SiteHeader containerClassName="" />
-            <div className="pb-6 lg:pb-12">
+        <main className="flex min-h-screen flex-col bg-background light-mode pb-12 lg:pb-24">
+            <SiteHeader containerClassName="" className="py-4 lg:py-8" />
+            <div className="flex-1">
                 <Essay essay={essay} />
             </div>
         </main>

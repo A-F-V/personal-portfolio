@@ -8,6 +8,7 @@ description: An argument for prioritizing durable, user-controlled files over pr
 slug: file-over-app-philosophical-case
 publish_date: 2024-11-26
 draft: false
+canonical_url: https://alessandrofv.substack.com/p/3-file-over-app-the-philisophical
 ---
 ## File Over App
 
