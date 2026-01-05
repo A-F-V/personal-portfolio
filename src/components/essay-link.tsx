@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { cn } from "@/lib/utils/shadcn";
-import { formatDate } from "../lib/utils/format";
 
 type EssayLinkProps = {
     title: string;
