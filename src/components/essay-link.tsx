@@ -22,7 +22,14 @@ export function EssayLink({
 }: EssayLinkProps) {
     const isExternalLink = /^https?:\/\//.test(link);
     const href = link;
-    const formattedDate = formatDate(datePublished);
+    const date = new Date(datePublished);
+    const formattedDate = new Intl.DateTimeFormat("en-US", {
+        day: "2-digit",
+        month: "short",
+    })
+        .format(date)
+        .toUpperCase();
+
     const readingTimeLabel =
         typeof readingTime === "number" && readingTime > 0
             ? `${Math.round(readingTime)} min read`
@@ -39,22 +46,16 @@ export function EssayLink({
             aria-label={`Read ${title}`}
         >
             <div className="flex items-baseline justify-between gap-4">
-                <span className="truncate text-lg font-bold text-foreground transition-colors duration-150 group-hover:underline group-focus-visible:underline">
+                <span className="text-xl font-bold text-foreground transition-colors duration-150 group-hover:underline group-focus-visible:underline">
                     {title}
                 </span>
                 <span className="hidden lg:block whitespace-nowrap font-mono text-xs uppercase tracking-[0.18em] text-accent/80">
                     {formattedDate}
                 </span>
             </div>
-            {/* 
-            {subtitle ? (
-                <p className="mt-1 text-sm text-foreground/80 line-clamp-2">
-                    {subtitle}
-                </p>
-            ) : null} */}
 
             {tags?.length || readingTimeLabel ? (
-                <div className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs uppercase tracking-[0.18em] text-foreground/60">
+                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.18em] text-foreground/60">
                     {tags?.length ? (
                         <span className="flex flex-wrap items-center gap-1">
                             {tags.join(" • ")}

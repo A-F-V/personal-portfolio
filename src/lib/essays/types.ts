@@ -11,6 +11,7 @@ export interface EssayFrontMatterBase {
     tags: string[];
     authors: string[];
     draft: boolean;
+    canonicalUrl?: string;
 }
 
 export interface EssayFrontMatter extends EssayFrontMatterBase {

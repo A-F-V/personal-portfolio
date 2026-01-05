@@ -1,5 +1,6 @@
 import { type ReactNode } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { FiArrowUpRight } from "react-icons/fi";
 
 import { cn } from "@/lib/utils/shadcn";
@@ -11,6 +12,7 @@ interface ProjectCardProps {
     icon?: ReactNode;
     className?: string;
     href?: string;
+    image?: string;
 }
 
 export function ProjectCard({
@@ -20,6 +22,7 @@ export function ProjectCard({
     icon,
     className,
     href,
+    image,
 }: ProjectCardProps) {
     const keywordContent = Array.isArray(keywords)
         ? keywords.join(" • ")
@@ -58,6 +61,18 @@ export function ProjectCard({
                 <p className="text-base sm:text-lg leading-relaxed text-foreground/90">
                     {description}
                 </p>
+
+                {image && (
+                    <div className="relative mt-2 w-full rounded-xl overflow-hidden">
+                        <Image
+                            src={image}
+                            alt={title}
+                            width={1200}
+                            height={630}
+                            className="w-full h-auto max-h-[400px] object-cover"
+                        />
+                    </div>
+                )}
             </div>
         </>
     );
