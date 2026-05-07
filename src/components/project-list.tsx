@@ -3,12 +3,29 @@ import { MinorHeading } from "./headings";
 import { IconType } from "./icon";
 import { ProjectCard } from "./project-card";
 import { FaCodeCommit } from "react-icons/fa6";
+import Image from "next/image";
 
 const headingIcon: IconType = {
     img: FaCodeCommit,
 };
 
 const featuredProjects = [
+    {
+        title: "Franklin",
+        keywords: ["agent sdk", "obsidian"],
+        description:
+            "Deeply integrated, personal AI Agents for Obsidian and beyond.",
+        href: "https://github.com/franklin-md/franklin-mono",
+        icon: (
+            <Image
+                src="/franklin-kite.png"
+                alt=""
+                width={64}
+                height={64}
+                className="size-16 rounded-md"
+            />
+        ),
+    },
     {
         title: "Janus",
         keywords: ["flashcards", "spaced repetition"],

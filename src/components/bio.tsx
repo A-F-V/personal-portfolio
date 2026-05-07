@@ -36,7 +36,7 @@ function SocialLinks({ className }: { className?: string }) {
         <div
             className={cn(
                 "flex flex-wrap justify-center gap-6 text-2xl sm:text-3xl",
-                className
+                className,
             )}
         >
             {socialLinks.map(({ href, icon }) => (
@@ -79,25 +79,16 @@ export function BioIntro() {
     return (
         <div>
             <h1 className="text-8xl font-serif mb-6">Alessandro Farace</h1>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 text-xl font-light">
                 <p>
-                    I&apos;m a <Highlight>software engineer</Highlight>{" "}
-                    exploring how technology can transform{" "}
-                    <Highlight>education and learning</Highlight>. Despite the
-                    explosion of free online educational content, graduates have
-                    not seen an improvement in intellectual or career outcomes.
-                </p>
-                <p>
-                    And yet, educational researchers have strong evidence that
-                    better methods and tools of instruction can nurture students
-                    to the ability of today&apos;s top 5%.
-                </p>
-                <p>
-                    This opportunity to{" "}
+                    I try to{" "}
                     <Highlight>
-                        radically realize students&apos; potential
+                        understand things better than I did yesterday.
                     </Highlight>{" "}
-                    is what inspires me and my work.
+                </p>
+                <p>
+                    I also <Highlight>code</Highlight> and build tools to help
+                    others do the same.
                 </p>
             </div>
         </div>
