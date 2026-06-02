@@ -52,9 +52,29 @@
 
         --radius: 0.75rem;
     }
+}
 
-    /* Light mode theme for essay pages */
-    .light-mode {
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    html.home-canvas,
+    body.home-canvas {
+        min-height: 100%;
+        background-color: var(--dark-background);
+        background-image: linear-gradient(
+            to bottom,
+            var(--light-background) 0%,
+            var(--background) 50vh,
+            var(--dark-background) 100vh,
+            var(--dark-background) 100%
+        );
+        background-repeat: no-repeat;
+    }
+
+    html.essay-canvas,
+    body.essay-canvas {
         --primary: #1e3a8a;
         --secondary: #e8593c;
         --destructive: #e8593c;
@@ -80,21 +100,19 @@
         --input: #f6efe0;
         --ring: #f6efe0;
 
-        /* Force color inheritance to use the light mode foreground */
+        min-height: 100%;
         color: var(--foreground);
+        background-color: #faf7ef;
+        background-image: none;
+        background-repeat: no-repeat;
     }
-}
 
-@layer base {
-    html {
-        scroll-behavior: smooth;
-    }
     * {
         @apply border-border;
     }
     /* Add global typography styles */
     body {
-        @apply bg-background text-foreground;
+        @apply text-foreground;
 
         /* Default letter spacing for the entire site if desired */
         @apply tracking-normal;
@@ -110,16 +128,6 @@
         text-transform: uppercase;
         font-weight: 500;
         letter-spacing: 0.25em;
-    }
-
-    .home-gradient {
-        background-image: linear-gradient(
-            to bottom,
-            var(--light-background) 0%,
-            var(--background) 50vh,
-            var(--dark-background) 100vh,
-            var(--dark-background) 100%
-        );
     }
 }
 

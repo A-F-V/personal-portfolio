@@ -80,7 +80,7 @@ export default async function EssayPage({ params }: EssayPageProps) {
     const essay = await resolveEssay(slug);
 
     return (
-        <main className="flex min-h-screen flex-col bg-background light-mode pb-12 lg:pb-24">
+        <main className="flex min-h-screen flex-col bg-background pb-12 lg:pb-24">
             <SiteHeader containerClassName="" className="py-4 lg:py-8" />
             <div className="flex-1">
                 <Essay essay={essay} />
