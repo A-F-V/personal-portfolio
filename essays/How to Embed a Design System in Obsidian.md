@@ -276,14 +276,10 @@ apps/
 Although this post focuses specifically on embedding ShadCN + Tailwind + React components in Obsidian extensions, the thought process is largely the same.
 
 You need to:
-- Understand how the host application deals with its own styles and with the plugin styles. **You must have strong intuitions about how they interact during the Cascade algorithm**
+- Understand how the host application deals with its own styles and with the plugin styles. **You need a working model of how they interact during the Cascade algorithm**
 - Figure out the appropriate build steps needed to create all stylesheets for your components that **adhere to the host's theme** and **that have higher priority than ambient defaults/overrides**.
 
 I have also left a couple of topics out of this post, but they are also important to consider:
 - **Portals**: How do the shared portal components know which root component they should attach to? (hint: it can't be the container of the extension's view because modals will add a background dim/blur effect to only part of the viewport).
 - **Resets**: We've discussed how to introduce explicit styles. On the other hand, the computed value for a style might be implicit. For example, [Firefox](https://raw.githubusercontent.com/mozilla-firefox/firefox/main/layout/style/res/ua.css) adds this rule to style visited links: `:visited { color: VisitedText; }`. But changing the host (i.e. from your Electron app to Obsidian) also changes these values. The trick is to add each problematic case to a `reset.css` file that has the exact same selector but is also prefixed by `.franklin`. Then, all elements scoped under the `.franklin` root reset the host's defaults to something preferred.
 - **Tailwind Preflight**: Because host defaults vary across browsers, Tailwind tries to normalize values through its `tailwindcss/preflight.css` stylesheet. Naively importing this in a plugin is a bad idea though because it is unscoped, hence why I omitted it from `global.css`
-
----
-
-This was also my first technical blog post, so feedback on style, on clarity and usefulness would be much appreciated :)
