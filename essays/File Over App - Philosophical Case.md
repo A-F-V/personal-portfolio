@@ -2,6 +2,7 @@
 authors:
   - Alessandro Farace
 tags:
+  - Thoughts
   - software
 title: "File Over App: The Philosophical Case"
 description: An argument for prioritizing durable, user-controlled files over proprietary applications.

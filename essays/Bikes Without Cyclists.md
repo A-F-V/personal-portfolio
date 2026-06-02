@@ -2,9 +2,9 @@
 authors:
   - Alessandro Farace
 tags:
-  - tech
-  - business
-  - micro-essay
+  - Thoughts
+  - AI
+  - Business
 title: Bikes without Cyclists
 subtitle: "AI's existential risk to deep skill development"
 description: A reflection on AI automation, delegation, and protecting deep skill development through deliberate practice.
