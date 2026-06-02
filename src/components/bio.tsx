@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { Rss } from "lucide-react";
 import { cn } from "@/lib/utils/shadcn";
+import { RSS_FEED_PATH } from "@/lib/site";
 import {
     GithubIcon,
     Icon,
@@ -9,6 +11,11 @@ import {
 } from "@/components/icon";
 
 const socialLinks = [
+    {
+        href: RSS_FEED_PATH,
+        icon: { img: Rss },
+        label: "RSS",
+    },
     {
         href: "https://www.linkedin.com/in/alessandro-farace-587959193/?ref=alessandrofv.com",
         icon: LinkedInIcon,
@@ -39,10 +46,11 @@ function SocialLinks({ className }: { className?: string }) {
                 className,
             )}
         >
-            {socialLinks.map(({ href, icon }) => (
+            {socialLinks.map(({ href, icon, label }) => (
                 <a
                     key={href}
                     href={href}
+                    aria-label={label}
                     target="_blank"
                     rel="noopener noreferrer"
                 >
