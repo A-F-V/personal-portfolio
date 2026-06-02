@@ -264,3 +264,13 @@
     color: var(--ctp-peach);
     font-weight: 700;
 }
+
+.essay-discuss .giscus,
+.essay-discuss .giscus-frame {
+    width: 100%;
+}
+
+.essay-discuss .giscus-frame {
+    border: 0;
+    color-scheme: light;
+}

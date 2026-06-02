@@ -6,6 +6,7 @@ import { getEssayBySlug, listEssaySlugs } from "@/lib/essays";
 import { EssayNotFoundError, type EssayDocument } from "@/lib/essays/types";
 import { Essay } from "@/components/essay";
 import { normalizeUrl } from "@/lib/essays/render/remark/asset-url";
+import { createSiteUrl } from "@/lib/site";
 
 interface EssayPageProps {
     params: Promise<{ slug: string }>;
@@ -49,6 +50,9 @@ export async function generateMetadata({
             authors: authors.map((name) => ({ name })),
             alternates: {
                 canonical: canonicalUrl,
+            },
+            other: {
+                "giscus:backlink": createSiteUrl(`/essay/${slug}`),
             },
             openGraph: {
                 title,

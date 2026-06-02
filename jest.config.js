@@ -61,7 +61,11 @@ const customJestConfig = {
             "ts-jest",
             {
                 useESM: false,
-                tsconfig: "tsconfig.json",
+                // Component tests import TSX directly; keep Next's app tsconfig
+                // JSX-preserve setting out of Jest's CommonJS transform.
+                tsconfig: {
+                    jsx: "react-jsx",
+                },
                 diagnostics: false,
             },
         ],
