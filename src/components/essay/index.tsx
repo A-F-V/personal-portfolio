@@ -1,7 +1,8 @@
 import { EssayHeader } from "./header";
-import { EssayDocument } from "@/lib/essays/types";
+import type { EssayDocument } from "@/lib/essays/types";
 import { EssayBody } from "./body";
 import { EssayFooter } from "./footer";
+import { EssayDiscuss } from "./discuss";
 
 interface EssayProps {
     essay: EssayDocument;
@@ -15,6 +16,7 @@ export function Essay({ essay }: EssayProps) {
             <EssayHeader frontMatter={frontMatter} />
             <EssayBody essay={essay} />
             <EssayFooter currentSlug={essay.slug} />
+            <EssayDiscuss />
         </article>
     );
 }
