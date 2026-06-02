@@ -142,7 +142,7 @@ function FooterActionLink({ action }: { action: FooterAction }) {
         >
             <span
                 className={cn(
-                    "flex size-8 shrink-0 items-center justify-center overflow-hidden border border-foreground/10 bg-background text-primary",
+                    "flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-md border border-foreground/10 bg-background text-primary",
                     action.iconShellClassName
                 )}
             >
