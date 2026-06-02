@@ -6,6 +6,7 @@ import rehypeSlug from "rehype-slug";
 import rehypeRaw from "rehype-raw";
 import rehypeReact from "rehype-react";
 import rehypeStringify from "rehype-stringify";
+import rehypePrism from "rehype-prism-plus";
 
 import { remarkEssayAssetPaths } from "./remark/asset-paths";
 import { rehypeAbsoluteUrls } from "./rehype/absolute-urls";
@@ -29,6 +30,7 @@ function createEssayProcessor() {
         .use(remarkEssayAssetPaths)
         .use(remarkRehype)
         .use(rehypeRaw)
+        .use(rehypePrism, { ignoreMissing: true })
         .use(rehypeSlug);
 }
 

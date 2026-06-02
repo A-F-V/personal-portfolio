@@ -146,3 +146,121 @@
         transform: scale(1);
     }
 }
+
+/* Essay syntax highlighting, scoped to prevent Prism selectors leaking into app UI.
+   Theme: Catppuccin Mocha, adapted locally from Catppuccin Prism guidance.
+   Sources:
+   - https://userstyles.catppuccin.com/contributing/guides/syntax-highlighting/#prismjs
+   - https://catppuccin.com/palette/ */
+.essay-content pre {
+    --ctp-rosewater: #f5e0dc;
+    --ctp-flamingo: #f2cdcd;
+    --ctp-pink: #f5c2e7;
+    --ctp-mauve: #cba6f7;
+    --ctp-red: #f38ba8;
+    --ctp-maroon: #eba0ac;
+    --ctp-peach: #fab387;
+    --ctp-yellow: #f9e2af;
+    --ctp-green: #a6e3a1;
+    --ctp-teal: #94e2d5;
+    --ctp-sky: #89dceb;
+    --ctp-sapphire: #74c7ec;
+    --ctp-blue: #89b4fa;
+    --ctp-lavender: #b4befe;
+    --ctp-text: #cdd6f4;
+    --ctp-subtext-1: #bac2de;
+    --ctp-subtext-0: #a6adc8;
+    --ctp-overlay-2: #9399b2;
+    --ctp-overlay-1: #7f849c;
+    --ctp-overlay-0: #6c7086;
+    --ctp-surface-2: #585b70;
+    --ctp-surface-1: #45475a;
+    --ctp-surface-0: #313244;
+    --ctp-base: #1e1e2e;
+    --ctp-mantle: #181825;
+    --ctp-crust: #11111b;
+
+    position: relative;
+    border: 1px solid var(--ctp-surface-0);
+    background: var(--ctp-base);
+    color: var(--ctp-text);
+    box-shadow: 0 18px 45px rgba(14, 27, 61, 0.16);
+}
+
+.essay-content pre code {
+    display: block;
+    color: inherit;
+    letter-spacing: 0;
+}
+
+.essay-content code.code-highlight {
+    float: left;
+    min-width: 100%;
+}
+
+.essay-content .code-line {
+    display: block;
+    min-height: 1.6em;
+}
+
+.essay-content .token.comment,
+.essay-content .token.prolog,
+.essay-content .token.doctype,
+.essay-content .token.cdata {
+    color: var(--ctp-overlay-1);
+}
+
+.essay-content .token.punctuation {
+    color: var(--ctp-overlay-2);
+}
+
+.essay-content .token.property,
+.essay-content .token.tag,
+.essay-content .token.constant,
+.essay-content .token.symbol,
+.essay-content .token.deleted {
+    color: var(--ctp-red);
+}
+
+.essay-content .token.boolean,
+.essay-content .token.number {
+    color: var(--ctp-peach);
+}
+
+.essay-content .token.selector,
+.essay-content .token.attr-name,
+.essay-content .token.string,
+.essay-content .token.char,
+.essay-content .token.builtin,
+.essay-content .token.inserted {
+    color: var(--ctp-green);
+}
+
+.essay-content .token.operator,
+.essay-content .token.entity,
+.essay-content .token.url,
+.essay-content .language-css .token.string,
+.essay-content .style .token.string {
+    color: var(--ctp-sky);
+}
+
+.essay-content .token.atrule,
+.essay-content .token.attr-value,
+.essay-content .token.keyword {
+    color: var(--ctp-mauve);
+}
+
+.essay-content .token.function,
+.essay-content .token.class-name {
+    color: var(--ctp-blue);
+}
+
+.essay-content .token.regex,
+.essay-content .token.variable {
+    color: var(--ctp-peach);
+}
+
+.essay-content .token.important {
+    color: var(--ctp-peach);
+    font-weight: 700;
+}
