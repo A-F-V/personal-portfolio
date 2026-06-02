@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EssayTagBadge } from "@/components/essay-tag-badge";
 import { cn } from "@/lib/utils/shadcn";
 
 type EssayLinkProps = {
@@ -54,14 +55,16 @@ export function EssayLink({
             </div>
 
             {tags?.length || readingTimeLabel ? (
-                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-[10px] uppercase tracking-[0.18em] text-foreground/60">
+                <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1.5">
                     {tags?.length ? (
-                        <span className="flex flex-wrap items-center gap-1">
-                            {tags.join(" • ")}
+                        <span className="flex min-w-0 flex-wrap items-center gap-1">
+                            {tags.map((tag) => (
+                                <EssayTagBadge key={tag} tag={tag} />
+                            ))}
                         </span>
                     ) : null}
                     {readingTimeLabel ? (
-                        <span className="ml-auto font-mono tracking-tight text-foreground/40">
+                        <span className="ml-auto font-mono text-[10px] uppercase tracking-tight text-foreground/40">
                             {readingTimeLabel}
                         </span>
                     ) : null}
