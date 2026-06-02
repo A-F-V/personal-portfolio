@@ -92,12 +92,12 @@ describe("essay RSS feed", () => {
         );
     });
 
-    it("preserves bare external domains as external links", async () => {
+    it("preserves explicit external links inside full feed content", async () => {
         const xml = await buildEssayRssXml(
             [
                 {
-                    ...createEssay("bare-domain", "2024-01-01"),
-                    content: "Visit [Janus](janus.cards).",
+                    ...createEssay("external-link", "2024-01-01"),
+                    content: "Visit [Janus](https://janus.cards).",
                 },
             ],
             { siteUrl }
