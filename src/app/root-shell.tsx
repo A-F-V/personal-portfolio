@@ -8,6 +8,13 @@ import {
 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/react";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import {
+    createSiteUrl,
+    getSiteUrl,
+    RSS_FEED_PATH,
+    SITE_DESCRIPTION,
+    SITE_NAME,
+} from "@/lib/site";
 
 const ebGaramond = EB_Garamond({
     subsets: ["latin"],
@@ -47,8 +54,14 @@ const fontVariables = [
 ].join(" ");
 
 export const baseMetadata: Metadata = {
-    title: "Alessandro Farace",
-    description: "Personal website of Alessandro Farace",
+    metadataBase: new URL(getSiteUrl()),
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    alternates: {
+        types: {
+            "application/rss+xml": createSiteUrl(RSS_FEED_PATH),
+        },
+    },
     icons: {
         icon: "/profile.jpg",
     },

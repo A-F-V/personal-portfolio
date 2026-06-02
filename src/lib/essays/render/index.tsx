@@ -5,12 +5,14 @@ import remarkRehype from "remark-rehype";
 import rehypeSlug from "rehype-slug";
 import rehypeRaw from "rehype-raw";
 import rehypeReact from "rehype-react";
+import rehypeStringify from "rehype-stringify";
 
 import { remarkEssayAssetPaths } from "./remark/asset-paths";
+import { rehypeAbsoluteUrls } from "./rehype/absolute-urls";
 import type { EssayDocument } from "../types";
 
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 function createReactOptions() {
     return {
@@ -20,19 +22,38 @@ function createReactOptions() {
     };
 }
 
-export async function renderEssayContent(
-    document: EssayDocument
-): Promise<ReactNode> {
-    const processor = unified()
+function createEssayProcessor() {
+    return unified()
         .use(remarkParse)
         .use(remarkGfm)
         .use(remarkEssayAssetPaths)
         .use(remarkRehype)
         .use(rehypeRaw)
-        .use(rehypeSlug)
-        .use(rehypeReact, createReactOptions());
+        .use(rehypeSlug);
+}
+
+export async function renderEssayContent(
+    document: EssayDocument
+): Promise<ReactNode> {
+    const processor = createEssayProcessor().use(
+        rehypeReact,
+        createReactOptions()
+    );
 
     const { result } = await processor.process(document.content);
 
     return result;
+}
+
+export async function renderEssayHtml(
+    document: EssayDocument,
+    siteUrl: string
+): Promise<string> {
+    const processor = createEssayProcessor()
+        .use(rehypeAbsoluteUrls(siteUrl))
+        .use(rehypeStringify);
+
+    const file = await processor.process(document.content);
+
+    return file.toString();
 }
