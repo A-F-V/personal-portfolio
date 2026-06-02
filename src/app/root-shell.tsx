@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import "./globals.css";
 import {
     EB_Garamond,
     Instrument_Serif,
@@ -46,7 +45,15 @@ const sourceSerif4 = Source_Serif_4({
     weight: ["400", "600", "700"],
 });
 
-export const metadata: Metadata = {
+const fontVariables = [
+    instrumentSerif.variable,
+    playfairDisplay.variable,
+    ebGaramond.variable,
+    inter.variable,
+    sourceSerif4.variable,
+].join(" ");
+
+export const baseMetadata: Metadata = {
     metadataBase: new URL(getSiteUrl()),
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
@@ -60,33 +67,62 @@ export const metadata: Metadata = {
     },
 };
 
-export const viewport: Viewport = {
+export const homeViewport: Viewport = {
     width: "device-width",
     initialScale: 1,
     viewportFit: "cover",
+    themeColor: "#02223f",
 };
 
-type RootLayoutProps = {
+export const essayViewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    viewportFit: "cover",
+    themeColor: "#faf7ef",
+};
+
+type RootShellProps = {
+    bodyClassName: string;
     children: React.ReactNode;
+    htmlClassName: string;
 };
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export function RootShell({
+    bodyClassName,
+    children,
+    htmlClassName,
+}: RootShellProps) {
     return (
-        <html
-            lang="en"
-            className={`${instrumentSerif.variable} ${playfairDisplay.variable} ${ebGaramond.variable} ${inter.variable} ${sourceSerif4.variable}`}
-        >
+        <html lang="en" className={`${fontVariables} ${htmlClassName}`}>
             <head>
                 <link
                     rel="stylesheet"
                     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css"
                 />
             </head>
-            <body className={`font-sans antialiased bg-no-repeat`}>
+            <body className={`font-sans antialiased ${bodyClassName}`}>
                 {children}
                 <Analytics />
                 <GoogleAnalytics gaId="G-CQ57BSS24F" />
             </body>
         </html>
     );
+}
+
+export function createCanvasLayout(canvasClassName: string) {
+    return function CanvasLayout({ children }: { children: React.ReactNode }) {
+        // Multiple root layouts intentionally trigger a full document load when
+        // crossing route groups. That tradeoff keeps iOS safe-area and overscroll
+        // painting server-rendered on the actual html/body canvas instead of
+        // relying on child selectors or client-side pathname mutation.
+        // See: https://nextjs.org/docs/app/api-reference/file-conventions/route-groups
+        return (
+            <RootShell
+                htmlClassName={canvasClassName}
+                bodyClassName={canvasClassName}
+            >
+                {children}
+            </RootShell>
+        );
+    };
 }

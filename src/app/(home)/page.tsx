@@ -6,7 +6,7 @@ export default async function Home() {
     const frontMatter = essays.map((essay) => essay.frontMatter);
 
     return (
-        <div className="flex flex-col items-center min-h-screen py-10 lg:pt-[20vh] lg:pb-[5vh] home-gradient">
+        <div className="flex flex-col items-center min-h-screen py-10 lg:pt-[20vh] lg:pb-[5vh]">
             <LandingHero essays={frontMatter} />
         </div>
     );
