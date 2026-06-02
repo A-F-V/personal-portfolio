@@ -1,11 +1,10 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Rss } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 
-import { Icon, SubstackIcon, TwitterIcon } from "@/components/icon";
+import { Icon, SubstackIcon } from "@/components/icon";
 import { getAllEssays } from "@/lib/essays";
-import { RSS_FEED_PATH } from "@/lib/site";
 import { cn } from "@/lib/utils/shadcn";
 import {
     getRecentEssayFooterPosts,
@@ -30,32 +29,18 @@ interface EssayFooterContentProps {
     recentPosts: EssayFooterPost[];
 }
 
-const followActions: FooterAction[] = [
-    {
-        href: RSS_FEED_PATH,
-        label: "RSS",
-        description: "New essays in your reader",
-        icon: <Rss className="size-4" aria-hidden />,
-    },
-    {
-        href: "https://alessandrofv.substack.com/?ref=alessandrofv.com",
-        label: "Substack",
-        description: "Subscribe by email",
-        icon: <Icon icon={SubstackIcon} className="size-4" />,
-    },
-    {
-        href: "https://x.com/AFV_7?ref=alessandrofv.com",
-        label: "Twitter",
-        description: "Short updates and notes",
-        icon: <Icon icon={TwitterIcon} className="size-4" />,
-    },
-];
+const subscribeAction: FooterAction = {
+    href: "https://alessandrofv.substack.com/?ref=alessandrofv.com",
+    label: "Subscribe",
+    description: "Subscribe by email",
+    icon: <Icon icon={SubstackIcon} className="size-4" />,
+};
 
 const projectActions: FooterAction[] = [
     {
         href: "https://janus.cards",
-        label: "AI Flashcard for Anki and Mochi",
-        description: "AI flashcards for durable memory",
+        label: "Janus",
+        description: "AI Flashcards",
         icon: (
             <Image
                 src="/janus-no-background.svg"
@@ -70,7 +55,7 @@ const projectActions: FooterAction[] = [
     {
         href: "https://github.com/franklin-md/franklin-mono",
         label: "Franklin",
-        description: "Personal AI agents for Obsidian",
+        description: "Agents in Obsidian",
         icon: (
             <Image
                 src="/franklin-kite.png"
@@ -156,6 +141,26 @@ function FooterActionLink({ action }: { action: FooterAction }) {
     );
 }
 
+function SubscribeActionLink({ action }: { action: FooterAction }) {
+    return (
+        <Link
+            href={action.href}
+            target="_blank"
+            rel="noreferrer noopener"
+            className={cn(
+                "group flex min-h-12 w-full min-w-0 items-center justify-center gap-3 rounded-md px-4 py-3",
+                "bg-[#FF6719] text-sm font-bold uppercase leading-none tracking-[0.16em] text-white shadow-md shadow-[#FF6719]/20",
+                "transition-all hover:-translate-y-0.5 hover:bg-[#FF6719]/90 hover:shadow-lg hover:shadow-[#FF6719]/25",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6719]/35 active:translate-y-0"
+            )}
+            prefetch={false}
+        >
+            {action.icon}
+            <span className="truncate">{action.label}</span>
+        </Link>
+    );
+}
+
 function RecentPostLink({ post }: { post: EssayFooterPost }) {
     return (
         <Link
@@ -190,13 +195,8 @@ export function EssayFooterContent({ recentPosts }: EssayFooterContentProps) {
                     </FooterColumn>
 
                     <FooterColumn title="Follow">
-                        <div className="space-y-1">
-                            {followActions.map((action) => (
-                                <FooterActionLink
-                                    key={action.href}
-                                    action={action}
-                                />
-                            ))}
+                        <div>
+                            <SubscribeActionLink action={subscribeAction} />
                         </div>
                     </FooterColumn>
 
