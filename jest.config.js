@@ -32,6 +32,7 @@ const ignoredModules = [
     "parse-entities",
     "property-information",
     "recma-.*",
+    "refractor",
     "rehype.*",
     "remark.*",
     "shiki",
