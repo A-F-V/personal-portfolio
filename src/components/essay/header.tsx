@@ -1,6 +1,7 @@
 import { EssayFrontMatter } from "@/lib/essays/types";
 import { formatDate } from "@/lib/utils/format";
 import { EssayHeroImage } from "../essay-hero-image";
+import { EssayTagBadge } from "../essay-tag-badge";
 import { normalizeUrl } from "@/lib/essays/render/remark/asset-url";
 import { SubstackLink } from "../substack-link";
 
@@ -42,14 +43,9 @@ export function EssayHeader({ frontMatter }: EssayHeaderProps) {
 
                 {/* Row 2: Tags */}
                 {frontMatter.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2 text-sm uppercase tracking-wider text-foreground/50 font-medium">
+                    <div className="flex flex-wrap gap-1.5">
                         {frontMatter.tags.map((tag) => (
-                            <span
-                                key={tag}
-                                className="hover:text-foreground/80 transition-colors cursor-default"
-                            >
-                                #{tag}
-                            </span>
+                            <EssayTagBadge key={tag} tag={tag} />
                         ))}
                     </div>
                 )}
