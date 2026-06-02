@@ -30,7 +30,7 @@ export function SubstackLink({ url, variant = "read", className }: SubstackLinkP
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-                "flex items-center gap-2 rounded-full border border-[#FF6719]/20 bg-[#FF6719]/10 px-2.5 py-1 text-xs font-bold uppercase tracking-tight text-[#FF6719] hover:bg-[#FF6719]/20 transition-colors",
+                "flex items-center gap-2 whitespace-nowrap rounded-[4px] border border-[#FF6719]/20 bg-[#FF6719]/10 px-2.5 py-1 text-xs font-bold uppercase tracking-tight text-[#FF6719] transition-colors hover:bg-[#FF6719]/20",
                 className
             )}
         >

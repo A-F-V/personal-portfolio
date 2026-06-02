@@ -10,7 +10,7 @@ import rehypePrism from "rehype-prism-plus";
 
 import { remarkEssayAssetPaths } from "./remark/asset-paths";
 import { rehypeAbsoluteUrls } from "./rehype/absolute-urls";
-import { remarkObsidianSyntax } from "./remark/obsidian";
+import { remarkObsidianMarkdown } from "./remark/obsidian";
 import type { EssayDocument } from "../types";
 
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
@@ -28,7 +28,7 @@ function createEssayProcessor() {
     return unified()
         .use(remarkParse)
         .use(remarkGfm)
-        .use(remarkObsidianSyntax)
+        .use(remarkObsidianMarkdown)
         .use(remarkEssayAssetPaths)
         .use(remarkRehype)
         .use(rehypeRaw)

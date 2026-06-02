@@ -2,21 +2,19 @@ import type { Root } from "mdast";
 import type { Plugin } from "unified";
 
 import { transformObsidianCallouts } from "./callout";
+import { transformObsidianImageEmbeds } from "./embed";
 import { transformObsidianInternalLinks } from "./wiki-link";
 
 /**
  * Converts supported Obsidian markdown into ordinary mdast nodes:
- * - Callout blockquotes are documented in `callout.ts`.
- * - Wiki links and block references are documented in `wiki-link.ts`.
+ * - callout blockquotes documented in `callout.ts`
+ * - image embeds documented in `embed.ts`
+ * - wiki links and block references documented in `wiki-link.ts`
  *
  * Remaining Obsidian markdown support to add:
- * - Image embeds: `![[buttons-without-prefix.png]]` should become the same
- *   mdast image shape as `![buttons-without-prefix.png](buttons-without-prefix.png)`
- *   so `remarkEssayAssetPaths` can normalize it to `/essay-assets/...`. Aliases
- *   such as `![[diagram.png|Specific alt text]]` should use the alias as the
- *   image alt text, while the asset filename remains the URL source. Size hints
- *   such as `![[diagram.png|400]]` are worth preserving as metadata only if the
- *   essay renderer later supports explicit image dimensions.
+ * - Cross-essay wiki links: `[[CSS Cascade Algorithm|CSS cascade]]` currently
+ *   renders as readable text until a future resolver can map vault page names
+ *   to canonical essay URLs.
  *
  * The important ordering constraint is that Obsidian-specific rewrites should
  * happen before `remarkEssayAssetPaths` and before the mdast tree is converted
@@ -24,7 +22,8 @@ import { transformObsidianInternalLinks } from "./wiki-link";
  * ordinary Markdown instead of carrying Obsidian-specific string handling into
  * rendering components.
  */
-export const remarkObsidianSyntax: Plugin<[], Root> = () => (tree) => {
+export const remarkObsidianMarkdown: Plugin<[], Root> = () => (tree) => {
     transformObsidianCallouts(tree);
+    transformObsidianImageEmbeds(tree);
     transformObsidianInternalLinks(tree);
 };

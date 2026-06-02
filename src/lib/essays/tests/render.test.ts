@@ -111,6 +111,27 @@ describe("renderEssayContent", () => {
         expect(html).toContain('<a href="#solution">Section</a>');
     });
 
+    it("renders Obsidian image embeds as normalized essay asset images", async () => {
+        const html = await renderEssayHtml(
+            [
+                "![[buttons-without-prefix.png]]",
+                "![[computed-style.png|Computed style panel]]",
+                "![[annotated styles.png|400]]",
+            ].join("\n")
+        );
+
+        expect(html).toContain(
+            '<img src="/essay-assets/buttons-without-prefix.png" alt="buttons-without-prefix.png"/>'
+        );
+        expect(html).toContain(
+            '<img src="/essay-assets/computed-style.png" alt="Computed style panel"/>'
+        );
+        expect(html).toContain(
+            '<img src="/essay-assets/annotated%20styles.png" alt="annotated styles.png" width="400"/>'
+        );
+        expect(html).not.toContain("![[");
+    });
+
     it("renders Obsidian same-page wiki links as internal hash links", async () => {
         const html = await renderEssayHtml(
             "The **[[#CSS Cascade Algorithm|CSS cascade]]** decides the winning rule."
