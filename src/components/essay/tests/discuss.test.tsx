@@ -23,19 +23,21 @@ describe("EssayDiscuss", () => {
         mockGiscusProps.length = 0;
     });
 
-    it("renders the compact Discuss section with the stable essay discussion mapping", () => {
+    it("renders the compact Discuss section without eagerly loading Giscus", () => {
         const html = renderToStaticMarkup(createElement(EssayDiscuss));
 
         expect(html).toContain('id="essay-discuss-heading"');
         expect(html).toContain(">Discuss<");
-        expect(html).not.toContain("Comments are powered by GitHub Discussions.");
-        expect(mockGiscusProps).toHaveLength(1);
-        expect(mockGiscusProps[0]).toMatchObject({
-            id: "essay-discussion",
-            repo: giscusEssayConfig.repo,
-            repoId: giscusEssayConfig.repoId,
-            category: giscusEssayConfig.category,
-            categoryId: giscusEssayConfig.categoryId,
+        expect(html).toContain("Powered by Giscus");
+        expect(mockGiscusProps).toHaveLength(0);
+    });
+
+    it("keeps the stable essay discussion mapping", () => {
+        expect(giscusEssayConfig).toMatchObject({
+            repo: "A-F-V/personal-portfolio",
+            repoId: "R_kgDOK1iarQ",
+            category: "Announcements",
+            categoryId: "DIC_kwDOK1iarc4C-XDr",
             mapping: "pathname",
             strict: "1",
             reactionsEnabled: "1",
