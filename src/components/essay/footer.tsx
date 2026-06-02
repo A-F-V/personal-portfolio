@@ -1,10 +1,11 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Rss } from "lucide-react";
 
-import { Icon, SubstackIcon } from "@/components/icon";
+import { Icon, SubstackIcon, TwitterIcon } from "@/components/icon";
 import { getAllEssays } from "@/lib/essays";
+import { RSS_FEED_PATH } from "@/lib/site";
 import { cn } from "@/lib/utils/shadcn";
 import {
     getRecentEssayFooterPosts,
@@ -21,6 +22,13 @@ interface FooterAction {
     iconShellClassName?: string;
 }
 
+interface FollowAction {
+    href: string;
+    label: string;
+    icon: ReactNode;
+    actionClassName: string;
+}
+
 interface EssayFooterProps {
     currentSlug: string;
 }
@@ -29,12 +37,29 @@ interface EssayFooterContentProps {
     recentPosts: EssayFooterPost[];
 }
 
-const subscribeAction: FooterAction = {
-    href: "https://alessandrofv.substack.com/?ref=alessandrofv.com",
-    label: "Subscribe",
-    description: "Subscribe by email",
-    icon: <Icon icon={SubstackIcon} className="size-4" />,
-};
+const followActions: FollowAction[] = [
+    {
+        href: "https://alessandrofv.substack.com/?ref=alessandrofv.com",
+        label: "Substack",
+        icon: <Icon icon={SubstackIcon} className="size-4" />,
+        actionClassName:
+            "bg-[#FF6719] text-white shadow-[#FF6719]/20 hover:bg-[#FF6719]/90 hover:shadow-[#FF6719]/25 focus-visible:ring-[#FF6719]/35",
+    },
+    {
+        href: "https://x.com/AFV_7?ref=alessandrofv.com",
+        label: "Twitter",
+        icon: <Icon icon={TwitterIcon} className="size-4" />,
+        actionClassName:
+            "bg-[#1D9BF0] text-white shadow-[#1D9BF0]/20 hover:bg-[#1D9BF0]/90 hover:shadow-[#1D9BF0]/25 focus-visible:ring-[#1D9BF0]/35",
+    },
+    {
+        href: RSS_FEED_PATH,
+        label: "RSS",
+        icon: <Rss className="size-4" aria-hidden />,
+        actionClassName:
+            "bg-primary text-primary-foreground shadow-primary/15 hover:bg-primary/90 hover:shadow-primary/20 focus-visible:ring-primary/25",
+    },
+];
 
 const projectActions: FooterAction[] = [
     {
@@ -117,7 +142,7 @@ function FooterActionLink({ action }: { action: FooterAction }) {
         >
             <span
                 className={cn(
-                    "flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-md border border-foreground/10 bg-background text-primary",
+                    "flex size-8 shrink-0 items-center justify-center overflow-hidden border border-foreground/10 bg-background text-primary",
                     action.iconShellClassName
                 )}
             >
@@ -141,21 +166,25 @@ function FooterActionLink({ action }: { action: FooterAction }) {
     );
 }
 
-function SubscribeActionLink({ action }: { action: FooterAction }) {
+function FollowActionLink({ action }: { action: FollowAction }) {
+    const external = isExternalHref(action.href);
+
     return (
         <Link
             href={action.href}
-            target="_blank"
-            rel="noreferrer noopener"
+            {...(external
+                ? { target: "_blank", rel: "noreferrer noopener" }
+                : {})}
             className={cn(
-                "group flex min-h-12 w-full min-w-0 items-center justify-center gap-3 rounded-md px-4 py-3",
-                "bg-[#FF6719] text-sm font-bold uppercase leading-none tracking-[0.16em] text-white shadow-md shadow-[#FF6719]/20",
-                "transition-all hover:-translate-y-0.5 hover:bg-[#FF6719]/90 hover:shadow-lg hover:shadow-[#FF6719]/25",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FF6719]/35 active:translate-y-0"
+                "group flex min-h-10 w-full min-w-0 items-center justify-center gap-2.5 rounded-md px-3 py-2",
+                "text-[12px] font-bold uppercase leading-none tracking-[0.16em] shadow-md",
+                "transition-all hover:-translate-y-0.5 hover:shadow-lg",
+                "focus-visible:outline-none focus-visible:ring-2 active:translate-y-0",
+                action.actionClassName
             )}
             prefetch={false}
         >
-            {action.icon}
+            <span className="shrink-0">{action.icon}</span>
             <span className="truncate">{action.label}</span>
         </Link>
     );
@@ -195,8 +224,13 @@ export function EssayFooterContent({ recentPosts }: EssayFooterContentProps) {
                     </FooterColumn>
 
                     <FooterColumn title="Follow">
-                        <div>
-                            <SubscribeActionLink action={subscribeAction} />
+                        <div className="space-y-2">
+                            {followActions.map((action) => (
+                                <FollowActionLink
+                                    key={action.href}
+                                    action={action}
+                                />
+                            ))}
                         </div>
                     </FooterColumn>
 
