@@ -2,6 +2,7 @@
 authors:
   - Alessandro Farace
 tags:
+  - thoughts
   - personal-experience
 title: The Path Less Travelled
 description: A meditation on embracing uncertainty and choosing unconventional paths in life.

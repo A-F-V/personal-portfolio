@@ -2,6 +2,7 @@
 authors:
   - Alessandro Farace
 tags:
+  - thoughts
   - personal-experience
 title: Overcoming Weak Inclinations
 description: A personal reflection on transforming weak inclinations into deliberate habits that drive long-term progress.

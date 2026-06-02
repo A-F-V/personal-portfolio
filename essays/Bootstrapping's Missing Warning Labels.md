@@ -2,6 +2,7 @@
 authors:
   - Alessandro Farace
 tags:
+  - thoughts
   - personal-experience
   - business
 title: "Bootstrapping's Missing Warning Labels"

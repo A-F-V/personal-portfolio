@@ -20,7 +20,7 @@ describe("parseEssayFile", () => {
             title: "Overcoming Weak Inclinations",
             publishDate: new Date("2024-10-16"),
             readingTime: 9.7,
-            tags: ["personal-experience"],
+            tags: ["thoughts", "personal-experience"],
             authors: ["Alessandro Farace"],
             description:
                 "A personal reflection on transforming weak inclinations into deliberate habits that drive long-term progress.",
