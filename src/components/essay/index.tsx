@@ -15,7 +15,7 @@ export function Essay({ essay }: EssayProps) {
         <article className="mx-auto flex w-full max-w-[720px] flex-col gap-4 px-6 py-8 lg:gap-8 lg:py-12">
             <EssayHeader frontMatter={frontMatter} />
             <EssayBody essay={essay} />
-            <EssayFooter />
+            <EssayFooter currentSlug={essay.slug} />
             <EssayDiscuss />
         </article>
     );
