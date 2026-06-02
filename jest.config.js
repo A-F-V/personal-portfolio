@@ -19,6 +19,7 @@ const ignoredModules = [
     "devlop",
     "escape-string-regexp",
     "estree-util.*",
+    "feed",
     "hast-util.*",
     "hastscript",
     "html-void-elements",
