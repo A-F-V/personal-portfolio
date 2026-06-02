@@ -2,19 +2,14 @@ import type { Root } from "mdast";
 import type { Plugin } from "unified";
 
 import { transformObsidianCallouts } from "./callout";
+import { transformObsidianImageEmbeds } from "./embed";
 
 /**
- * Converts only Obsidian callout blockquotes into ordinary mdast blockquotes.
- * Output shape is documented in `callout.ts`.
+ * Converts supported Obsidian markdown into ordinary mdast nodes:
+ * - callout blockquotes documented in `callout.ts`
+ * - image embeds documented in `embed.ts`
  *
  * Remaining Obsidian markdown support to add:
- * - Image embeds: `![[buttons-without-prefix.png]]` should become the same
- *   mdast image shape as `![buttons-without-prefix.png](buttons-without-prefix.png)`
- *   so `remarkEssayAssetPaths` can normalize it to `/essay-assets/...`. Aliases
- *   such as `![[diagram.png|Specific alt text]]` should use the alias as the
- *   image alt text, while the asset filename remains the URL source. Size hints
- *   such as `![[diagram.png|400]]` are worth preserving as metadata only if the
- *   essay renderer later supports explicit image dimensions.
  * - Wiki links: `[[CSS Cascade Algorithm|CSS cascade]]` should become an
  *   internal essay link whose visible text is `CSS cascade`; `[[CSS Cascade
  *   Algorithm]]` should use the page name as both the destination label and
@@ -35,6 +30,7 @@ import { transformObsidianCallouts } from "./callout";
  * ordinary Markdown instead of carrying Obsidian-specific string handling into
  * rendering components.
  */
-export const remarkObsidianCallouts: Plugin<[], Root> = () => (tree) => {
+export const remarkObsidianMarkdown: Plugin<[], Root> = () => (tree) => {
     transformObsidianCallouts(tree);
+    transformObsidianImageEmbeds(tree);
 };
