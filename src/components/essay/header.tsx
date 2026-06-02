@@ -28,17 +28,20 @@ export function EssayHeader({ frontMatter }: EssayHeaderProps) {
             </div>
 
             <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-x-4 text-sm uppercase tracking-wider text-foreground/50 font-medium">
-                    <span>{formattedDate}</span>
-                    <span className="w-1 h-1 rounded-full bg-foreground/20" />
-                    <span>{readingTimeLabel}</span>
-                </div>
-
-                {isSubstack && (
-                    <div className="flex">
-                        <SubstackLink url={frontMatter.canonicalUrl!} />
+                <div className="flex flex-col items-start gap-2 lg:flex-row lg:items-center">
+                    <div className="flex items-center gap-x-4 text-sm uppercase tracking-wider text-foreground/50 font-medium">
+                        <span>{formattedDate}</span>
+                        <span className="w-1 h-1 rounded-full bg-foreground/20" />
+                        <span>{readingTimeLabel}</span>
                     </div>
-                )}
+
+                    {isSubstack && (
+                        <SubstackLink
+                            url={frontMatter.canonicalUrl!}
+                            className="lg:ml-auto"
+                        />
+                    )}
+                </div>
 
                 {frontMatter.tags.length > 0 && (
                     <div className="flex flex-wrap gap-1.5">
