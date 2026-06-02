@@ -3,26 +3,18 @@ import type { Plugin } from "unified";
 
 import { transformObsidianCallouts } from "./callout";
 import { transformObsidianImageEmbeds } from "./embed";
+import { transformObsidianInternalLinks } from "./wiki-link";
 
 /**
  * Converts supported Obsidian markdown into ordinary mdast nodes:
  * - callout blockquotes documented in `callout.ts`
  * - image embeds documented in `embed.ts`
+ * - wiki links and block references documented in `wiki-link.ts`
  *
  * Remaining Obsidian markdown support to add:
- * - Wiki links: `[[CSS Cascade Algorithm|CSS cascade]]` should become an
- *   internal essay link whose visible text is `CSS cascade`; `[[CSS Cascade
- *   Algorithm]]` should use the page name as both the destination label and
- *   visible text. The likely behavior is to slugify the destination in the same
- *   way essay headings are slugged and emit a normal mdast link to
- *   `#css-cascade-algorithm`, unless a future cross-essay resolver maps vault
- *   page names to canonical essay URLs.
- * - Heading or block links: `[[#The Hard Part|skip ahead]]` and
- *   `[[#^solution|here]]` should become hash links. Heading links can point to
- *   the slugged heading id produced by `rehypeSlug`. Block ids like `^solution`
- *   need either a small remark pass that strips the marker from the prose and
- *   attaches an id to the preceding block, or a fallback that emits
- *   `href="#solution"` only when the target marker is known to exist.
+ * - Cross-essay wiki links: `[[CSS Cascade Algorithm|CSS cascade]]` currently
+ *   renders as readable text until a future resolver can map vault page names
+ *   to canonical essay URLs.
  *
  * The important ordering constraint is that Obsidian-specific rewrites should
  * happen before `remarkEssayAssetPaths` and before the mdast tree is converted
@@ -33,4 +25,5 @@ import { transformObsidianImageEmbeds } from "./embed";
 export const remarkObsidianMarkdown: Plugin<[], Root> = () => (tree) => {
     transformObsidianCallouts(tree);
     transformObsidianImageEmbeds(tree);
+    transformObsidianInternalLinks(tree);
 };
