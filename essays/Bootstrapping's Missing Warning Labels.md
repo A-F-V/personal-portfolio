@@ -11,7 +11,7 @@ publish_date: 2025-12-17
 draft: false
 canonical_url: https://alessandrofv.substack.com/p/bootstrappings-missing-warning-labels
 ---
-It's been over a year running my AI flashcard startup [Janus](janus.cards) and the reality of solo [bootstrapping](https://stripe.com/gb/resources/more/the-bootstrapping-guide-for-startups-what-entrepreneurs-need-to-know) is a lot harder than I thought. The instruction manuals from successful founders were missing a couple warning labels. Fundamentally, some of the principles that startup operators have been following break-down at the microscopic scale of a one-person company.
+It's been over a year running my AI flashcard startup [Janus](https://janus.cards) and the reality of solo [bootstrapping](https://stripe.com/gb/resources/more/the-bootstrapping-guide-for-startups-what-entrepreneurs-need-to-know) is a lot harder than I thought. The instruction manuals from successful founders were missing a couple warning labels. Fundamentally, some of the principles that startup operators have been following break-down at the microscopic scale of a one-person company.
 
 I don't want to dissuade you from starting (spoiler: I'm still going at it). I want to help pre-empt any "if only I had known" moments.
 
