@@ -7,6 +7,7 @@ import rehypeRaw from "rehype-raw";
 import rehypeReact from "rehype-react";
 import rehypeStringify from "rehype-stringify";
 import rehypePrism from "rehype-prism-plus";
+import rehypeCodeTitles from "rehype-code-titles";
 
 import { remarkEssayAssetPaths } from "./remark/asset-paths";
 import { rehypeAbsoluteUrls } from "./rehype/absolute-urls";
@@ -32,6 +33,7 @@ function createEssayProcessor() {
         .use(remarkEssayAssetPaths)
         .use(remarkRehype)
         .use(rehypeRaw)
+        .use(rehypeCodeTitles, { customClassName: "essay-code-title" })
         .use(rehypePrism, { ignoreMissing: true })
         .use(rehypeSlug);
 }

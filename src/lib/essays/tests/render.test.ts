@@ -58,6 +58,24 @@ describe("renderEssayContent", () => {
         expect(html).toContain("token keyword");
     });
 
+    it("renders code block titles from language fence filenames", async () => {
+        const html = await renderEssayHtml(
+            [
+                "```typescript:src/lib/essays/render/index.tsx",
+                'const label: string = "demo";',
+                "```",
+            ].join("\n")
+        );
+
+        expect(html).toContain(
+            '<div class="essay-code-title">src/lib/essays/render/index.tsx</div>'
+        );
+        expect(html).toContain("language-typescript");
+        expect(html).toContain("code-highlight");
+        expect(html).toContain("token keyword");
+        expect(html).not.toContain("language-typescript:src");
+    });
+
     it("renders code blocks with unknown languages without failing", async () => {
         const html = await renderEssayHtml(
             ["```not-a-real-language", "value = 1", "```"].join("\n")

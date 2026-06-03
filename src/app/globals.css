@@ -152,7 +152,8 @@
    Sources:
    - https://userstyles.catppuccin.com/contributing/guides/syntax-highlighting/#prismjs
    - https://catppuccin.com/palette/ */
-.essay-content pre {
+.essay-content pre,
+.essay-content .essay-code-title {
     --ctp-rosewater: #f5e0dc;
     --ctp-flamingo: #f2cdcd;
     --ctp-pink: #f5c2e7;
@@ -179,12 +180,42 @@
     --ctp-base: #1e1e2e;
     --ctp-mantle: #181825;
     --ctp-crust: #11111b;
+}
 
+.essay-content pre {
     position: relative;
     border: 1px solid var(--ctp-surface-0);
     background: var(--ctp-base);
     color: var(--ctp-text);
     box-shadow: 0 18px 45px rgba(14, 27, 61, 0.16);
+}
+
+.essay-content .essay-code-title {
+    display: flex;
+    align-items: center;
+    min-height: 2.5rem;
+    /* The essay body uses gap-4; offset it so the title attaches to the following code block. */
+    margin-bottom: calc(-1rem - 1px);
+    overflow-x: auto;
+    border: 1px solid var(--ctp-surface-0);
+    border-bottom: 0;
+    border-radius: 0.75rem 0.75rem 0 0;
+    background: var(--ctp-mantle);
+    color: var(--ctp-subtext-0);
+    padding: 0.625rem 1.5rem;
+    font-family:
+        ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        "Liberation Mono", "Courier New", monospace;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    line-height: 1.4;
+    letter-spacing: 0;
+    white-space: nowrap;
+}
+
+.essay-content .essay-code-title + pre {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
 
 .essay-content pre code {
