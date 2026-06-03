@@ -35,7 +35,9 @@ Required GitHub setup:
   visitors can still comment.
 
 The root `giscus.json` restricts which page origins can load this repository's
-discussions and allows localhost for development. See the Giscus
+discussions, including the current `alessandrofarace.com` production domain and
+the legacy `alessandrofv.com` redirect domain, and allows localhost for
+development. See the Giscus
 [advanced usage guide](https://github.com/giscus/giscus/blob/main/ADVANCED-USAGE.md)
 and GitHub's
 [discussion category documentation](https://docs.github.com/en/discussions/managing-discussions-for-your-community/managing-categories-for-discussions).

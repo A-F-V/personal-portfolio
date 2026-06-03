@@ -1,5 +1,10 @@
 {
-    "origins": ["https://alessandrofv.com", "https://www.alessandrofv.com"],
+    "origins": [
+        "https://alessandrofarace.com",
+        "https://www.alessandrofarace.com",
+        "https://alessandrofv.com",
+        "https://www.alessandrofv.com"
+    ],
     "originsRegex": ["http://localhost:[0-9]+", "http://127\\.0\\.0\\.1:[0-9]+"],
     "defaultCommentOrder": "newest"
 }
