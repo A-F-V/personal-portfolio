@@ -1,6 +1,6 @@
 export const SITE_NAME = "Alessandro Farace";
 export const SITE_DESCRIPTION = "Personal website of Alessandro Farace";
-export const DEFAULT_SITE_URL = "https://alessandrofv.com";
+export const DEFAULT_SITE_URL = "https://alessandrofarace.com";
 export const RSS_FEED_PATH = "/rss.xml";
 
 export function getSiteUrl(): string {
