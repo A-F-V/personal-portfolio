@@ -98,7 +98,7 @@ export function BioIntro() {
                 <p>
                     I suppose the best way to know me professionally is
                     through the underlying question that led me to solo
-                    bootstrap a flashcard generator for 2 years:
+                    bootstrap a flashcard generator for two years:
                 </p>
                 <p className="font-serif text-3xl font-normal py-2">
                     What is the limit of human potential?
@@ -113,9 +113,9 @@ export function BioIntro() {
                 <p>
                     If our potential were predetermined, by talents arbitrarily
                     endowed to us at birth, that would be a bleak world. I
-                    don&apos;t believe it is the case. I think{" "}
+                    don&apos;t believe it is the case.{" "}
                     <Highlight>
-                        better systems of thought and personal development
+                        Better systems of thought and personal development
                     </Highlight>{" "}
                     exist.
                 </p>
