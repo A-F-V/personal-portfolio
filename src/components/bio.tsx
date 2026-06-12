@@ -83,20 +83,47 @@ export function BioSidebar() {
     );
 }
 
+const drivingQuestions = [
+    "Can we think deeply for more than four hours a day?",
+    "Hold focus past the 90 minute wall?",
+    "Remember what we read for years instead of weeks?",
+    "Learn twice as fast?",
+];
+
 export function BioIntro() {
     return (
         <div>
             <h1 className="text-8xl font-serif mb-6">Alessandro Farace</h1>
             <div className="flex flex-col gap-4 text-xl font-light">
                 <p>
-                    I try to{" "}
+                    I suppose the best way to know me professionally is
+                    through the underlying question that led me to solo
+                    bootstrap a flashcard generator for 2 years:
+                </p>
+                <p className="font-serif text-3xl font-normal py-2">
+                    What is the limit of human potential?
+                </p>
+                <ul className="flex flex-col gap-1 list-none">
+                    {drivingQuestions.map((question) => (
+                        <li key={question} className="italic">
+                            {question}
+                        </li>
+                    ))}
+                </ul>
+                <p>
+                    If our potential were predetermined, by talents arbitrarily
+                    endowed to us at birth, that would be a bleak world. I
+                    don&apos;t believe it is the case. I think{" "}
                     <Highlight>
-                        understand things better than I did yesterday.
+                        better systems of thought and personal development
                     </Highlight>{" "}
+                    exist.
                 </p>
                 <p>
-                    I also <Highlight>code</Highlight> and build tools to help
-                    others do the same.
+                    Helping myself and others{" "}
+                    <Highlight>raise that ceiling</Highlight> is one of the
+                    deepest sources of meaning in my life. Everything below is
+                    in service of that.
                 </p>
             </div>
         </div>
