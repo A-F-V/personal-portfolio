@@ -61,10 +61,6 @@ function SocialLinks({ className }: { className?: string }) {
     );
 }
 
-function Highlight({ children }: { children: React.ReactNode }) {
-    return <span className="font-bold underline ">{children}</span>;
-}
-
 export function BioSidebar() {
     return (
         <div className="flex flex-col gap-10 items-center w-full min-w-0">
@@ -100,10 +96,10 @@ export function BioIntro() {
                     through the underlying question that led me to solo
                     bootstrap a flashcard generator for two years:
                 </p>
-                <p className="font-serif text-3xl font-normal py-2">
+                <p className="font-serif text-4xl font-normal py-4">
                     What is the limit of human potential?
                 </p>
-                <ul className="flex flex-col gap-1 list-none">
+                <ul className="flex flex-col gap-1.5 list-none border-l-2 border-foreground/30 pl-4">
                     {drivingQuestions.map((question) => (
                         <li key={question} className="italic">
                             {question}
@@ -114,14 +110,15 @@ export function BioIntro() {
                     If our potential were predetermined, by talents arbitrarily
                     endowed to us at birth, that would be a bleak world. I
                     don&apos;t believe it is the case.{" "}
-                    <Highlight>
+                    <span className="font-bold">
                         Better systems of thought and personal development
-                    </Highlight>{" "}
+                    </span>{" "}
                     exist.
                 </p>
                 <p>
                     Helping myself and others{" "}
-                    <Highlight>raise that ceiling</Highlight> is one of the
+                    <span className="font-bold">raise that ceiling</span> is
+                    one of the
                     deepest sources of meaning in my life. Everything below is
                     in service of that.
                 </p>
