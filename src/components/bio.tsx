@@ -61,10 +61,6 @@ function SocialLinks({ className }: { className?: string }) {
     );
 }
 
-function Highlight({ children }: { children: React.ReactNode }) {
-    return <span className="font-bold underline ">{children}</span>;
-}
-
 export function BioSidebar() {
     return (
         <div className="flex flex-col gap-10 items-center w-full min-w-0">
@@ -83,20 +79,48 @@ export function BioSidebar() {
     );
 }
 
+const drivingQuestions = [
+    "Can we think deeply for more than four hours a day?",
+    "Hold focus past the 90 minute wall?",
+    "Remember what we read for years instead of weeks?",
+    "Learn twice as fast?",
+];
+
 export function BioIntro() {
     return (
         <div>
             <h1 className="text-8xl font-serif mb-6">Alessandro Farace</h1>
             <div className="flex flex-col gap-4 text-xl font-light">
                 <p>
-                    I try to{" "}
-                    <Highlight>
-                        understand things better than I did yesterday.
-                    </Highlight>{" "}
+                    I suppose the best way to know me professionally is
+                    through the underlying question that led me to solo
+                    bootstrap a flashcard generator for two years:
+                </p>
+                <p className="font-serif text-4xl font-normal py-4">
+                    What is the limit of human potential?
+                </p>
+                <ul className="flex flex-col gap-1.5 list-none border-l-2 border-foreground/30 pl-4">
+                    {drivingQuestions.map((question) => (
+                        <li key={question} className="italic">
+                            {question}
+                        </li>
+                    ))}
+                </ul>
+                <p>
+                    If our potential were predetermined, by talents arbitrarily
+                    endowed to us at birth, that would be a bleak world. I
+                    don&apos;t believe it is the case.{" "}
+                    <span className="font-bold">
+                        Better systems of thought and personal development
+                    </span>{" "}
+                    exist.
                 </p>
                 <p>
-                    I also <Highlight>code</Highlight> and build tools to help
-                    others do the same.
+                    Helping myself and others{" "}
+                    <span className="font-bold">raise that ceiling</span> is
+                    one of the
+                    deepest sources of meaning in my life. Everything below is
+                    in service of that.
                 </p>
             </div>
         </div>
